@@ -120,6 +120,16 @@ img {
     pointer-events: none;
 }
 
+.has-mega::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 1.25rem;
+    pointer-events: none;
+}
+
 .mega-menu {
     position: absolute;
     left: 50%;
