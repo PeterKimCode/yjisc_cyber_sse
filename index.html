@@ -648,41 +648,44 @@
         <section id="admissions" class="section admissions">
             <div class="container split">
                 <div>
-                    <h2>입학 안내</h2>
-                    <p>신입학과 편입학 전형, 등록금, 장학 혜택, 학사 일정 등 입학에 필요한 모든 정보를 확인하세요.</p>
+                    <h2 data-locale-en="Admissions Information">입학 안내</h2>
+                    <p data-locale-en="Find everything you need to know about admissions, including application tracks, tuition, scholarships, and academic schedules.">신입학과 편입학 전형, 등록금, 장학 혜택, 학사 일정 등 입학에 필요한 모든 정보를 확인하세요.</p>
                     <dl class="info-list">
                         <div>
-                            <dt>원서 접수</dt>
-                            <dd>2024.12.01 ~ 2024.12.31 (온라인)</dd>
+                            <dt data-locale-en="Application Period">원서 접수</dt>
+                            <dd data-locale-en="2024.12.01 ~ 2024.12.31 (Online)">2024.12.01 ~ 2024.12.31 (온라인)</dd>
                         </div>
                         <div>
-                            <dt>면접 전형</dt>
-                            <dd>2025.01.10 ~ 2025.01.15 (화상 면접)</dd>
+                            <dt data-locale-en="Interview">면접 전형</dt>
+                            <dd data-locale-en="2025.01.10 ~ 2025.01.15 (Virtual Interview)">2025.01.10 ~ 2025.01.15 (화상 면접)</dd>
                         </div>
                         <div>
-                            <dt>합격 발표</dt>
-                            <dd>2025.01.25 (홈페이지 및 문자 안내)</dd>
+                            <dt data-locale-en="Admission Result">합격 발표</dt>
+                            <dd data-locale-en="2025.01.25 (Website & SMS Notifications)">2025.01.25 (홈페이지 및 문자 안내)</dd>
                         </div>
                     </dl>
-                    <a class="btn primary" href="#apply">입학 지원 바로가기</a>
+                    <div class="cta-group">
+                        <a class="btn primary" href="#apply" data-locale-en="Apply Now">입학 지원 바로가기</a>
+                        <button type="button" class="btn ghost translation-toggle" data-translate-toggle data-toggle-label-en="English" data-toggle-label-ko="한국어" aria-pressed="false">English</button>
+                    </div>
                 </div>
                 <aside class="admission-card">
-                    <h3>상담 예약</h3>
-                    <p>입학 전문 상담사가 궁금증을 해결해 드립니다.</p>
+                    <h3 data-locale-en="Consultation Booking">상담 예약</h3>
+                    <p data-locale-en="Our admissions counselors will help you with any questions you have.">입학 전문 상담사가 궁금증을 해결해 드립니다.</p>
                     <form>
                         <label>
-                            이름
+                            <span data-locale-en="Name">이름</span>
                             <input type="text" name="name" placeholder="홍길동" required />
                         </label>
                         <label>
-                            연락처
+                            <span data-locale-en="Contact">연락처</span>
                             <input type="tel" name="phone" placeholder="010-1234-5678" required />
                         </label>
                         <label>
-                            상담 희망일
+                            <span data-locale-en="Preferred Date">상담 희망일</span>
                             <input type="date" name="date" required />
                         </label>
-                        <button type="submit" class="btn primary">예약 신청</button>
+                        <button type="submit" class="btn primary" data-locale-en="Reserve Now">예약 신청</button>
                     </form>
                 </aside>
             </div>
@@ -808,6 +811,12 @@
             </div>
         </div>
     </footer>
+    <button type="button" class="scroll-to-top" data-scroll-top aria-label="맨 위로">
+        <svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
+            <path d="M12 5.5a1 1 0 0 1 .7.3l6 6a1 1 0 0 1-1.4 1.4L12 7.91l-5.3 5.29a1 1 0 0 1-1.4-1.42l6-6a1 1 0 0 1 .7-.28Z" />
+            <path d="M12 11.5a1 1 0 0 1 .7.3l6 6a1 1 0 0 1-1.4 1.4L12 13.91l-5.3 5.29a1 1 0 0 1-1.4-1.42l6-6a1 1 0 0 1 .7-.28Z" />
+        </svg>
+    </button>
     <script src="assets/js/main.js" defer></script>
 </body>
 </html>
