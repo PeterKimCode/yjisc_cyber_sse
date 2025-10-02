@@ -73,6 +73,10 @@ img {
     padding: 0;
 }
 
+.main-nav li {
+    position: relative;
+}
+
 .main-nav a {
     font-weight: 500;
     padding: 0.25rem 0;
@@ -96,6 +100,112 @@ img {
 .main-nav a:hover::after,
 .main-nav a:focus::after {
     transform: scaleX(1);
+}
+
+.main-nav li.has-mega > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.main-nav li.has-mega > a::after {
+    display: none;
+}
+
+.has-mega > a::before {
+    content: "";
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-left: 0.25rem;
+    transition: transform 0.2s ease;
+}
+
+.has-mega:hover > a::before,
+.has-mega:focus-within > a::before {
+    transform: rotate(225deg);
+}
+
+.mega-menu {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 1rem);
+    transform: translate(-50%, 10px);
+    width: min(920px, 90vw);
+    background: #0f1f4c;
+    color: var(--white);
+    padding: 2rem 2.5rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 28px 48px rgba(15, 31, 76, 0.32);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 20;
+}
+
+.has-mega:hover .mega-menu,
+.has-mega:focus-within .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+.mega-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.mega-column {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.mega-section h3,
+.mega-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: #b8c8ff;
+}
+
+.mega-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.45rem;
+}
+
+.mega-section ul a,
+.mega-heading {
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.mega-section ul a:hover,
+.mega-section ul a:focus,
+.mega-heading:hover,
+.mega-heading:focus {
+    color: var(--accent);
+}
+
+.mega-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0;
+}
+
+.mega-heading::after {
+    content: "→";
+    font-size: 0.8rem;
 }
 
 .cta-group {
