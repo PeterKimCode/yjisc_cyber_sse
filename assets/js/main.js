@@ -4,6 +4,119 @@ if (root && !root.classList.contains('js-enabled')) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const isStorageAvailable = (() => {
+        try {
+            const key = '__sdu-storage-check__';
+            window.localStorage.setItem(key, key);
+            window.localStorage.removeItem(key);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    })();
+
+    const ensureHeaderCtaGroup = () => {
+        const headerContainer = document.querySelector('.site-header .container');
+        if (!headerContainer) {
+            return null;
+        }
+
+        let ctaGroup = headerContainer.querySelector('.cta-group');
+        if (!ctaGroup) {
+            ctaGroup = document.createElement('div');
+            ctaGroup.className = 'cta-group';
+            headerContainer.appendChild(ctaGroup);
+        }
+
+        return ctaGroup;
+    };
+
+    const ensureTranslationButton = () => {
+        let translationButton = document.querySelector('[data-translate-toggle]');
+        if (translationButton) {
+            return translationButton;
+        }
+
+        const ctaGroup = ensureHeaderCtaGroup();
+        if (!ctaGroup) {
+            return null;
+        }
+
+        translationButton = document.createElement('button');
+        translationButton.type = 'button';
+        translationButton.className = 'btn ghost translation-toggle';
+        translationButton.setAttribute('data-translate-toggle', '');
+        translationButton.setAttribute('data-toggle-label-en', 'English');
+        translationButton.setAttribute('data-toggle-label-ko', '한국어');
+        translationButton.setAttribute('aria-pressed', 'false');
+        translationButton.textContent = 'English';
+        ctaGroup.appendChild(translationButton);
+
+        return translationButton;
+    };
+
+    const ensureScrollButton = () => {
+        let scrollButton = document.querySelector('[data-scroll-top]');
+        if (scrollButton) {
+            return scrollButton;
+        }
+
+        scrollButton = document.createElement('button');
+        scrollButton.type = 'button';
+        scrollButton.className = 'scroll-to-top';
+        scrollButton.setAttribute('data-scroll-top', '');
+        scrollButton.setAttribute('aria-label', '맨 위로');
+        scrollButton.innerHTML =
+            '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">' +
+            '<path d="M12 5.5a1 1 0 0 1 .7.3l6 6a1 1 0 0 1-1.4 1.4L12 7.91l-5.3 5.29a1 1 0 0 1-1.4-1.42l6-6a1 1 0 0 1 .7-.28Z" />' +
+            '<path d="M12 11.5a1 1 0 0 1 .7.3l6 6a1 1 0 0 1-1.4 1.4L12 13.91l-5.3 5.29a1 1 0 0 1-1.4-1.42l6-6a1 1 0 0 1 .7-.28Z" />' +
+            '</svg>';
+        document.body.appendChild(scrollButton);
+
+        return scrollButton;
+    };
+
+    const ensureDarkModeToggle = () => {
+        let themeToggle = document.querySelector('[data-theme-toggle]');
+        if (themeToggle) {
+            return themeToggle;
+        }
+
+        themeToggle = document.createElement('button');
+        themeToggle.type = 'button';
+        themeToggle.className = 'dark-mode-toggle';
+        themeToggle.setAttribute('data-theme-toggle', '');
+        themeToggle.setAttribute('aria-pressed', 'false');
+        themeToggle.innerHTML =
+            '<span class="dark-mode-toggle__icon" aria-hidden="true">🌙</span>' +
+            '<span class="dark-mode-toggle__label">다크 모드</span>';
+        document.body.appendChild(themeToggle);
+
+        return themeToggle;
+    };
+
+    const applyTheme = (theme) => {
+        const isDark = theme === 'dark';
+        document.body.classList.toggle('theme-dark', isDark);
+        document.documentElement.dataset.theme = theme;
+    };
+
+    const getStoredTheme = () => {
+        if (!isStorageAvailable) {
+            return null;
+        }
+
+        return window.localStorage.getItem('preferred-theme');
+    };
+
+    const storeTheme = (theme) => {
+        if (!isStorageAvailable) {
+            return;
+        }
+
+        window.localStorage.setItem('preferred-theme', theme);
+    };
+
     const slider = document.querySelector('[data-hero-slider]');
 
     if (slider) {
@@ -140,41 +253,100 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const translationButton = document.querySelector('[data-translate-toggle]');
+    const translationButton = ensureTranslationButton();
     if (translationButton) {
         const translationTargets = document.querySelectorAll('[data-locale-en]');
-        translationTargets.forEach((element) => {
-            if (!element.dataset.localeKo) {
-                element.dataset.localeKo = element.textContent.trim();
-            }
-        });
-
-        let isEnglish = false;
-        const labelEn = translationButton.dataset.toggleLabelEn || translationButton.textContent.trim();
+        const hasLocalTranslations = translationTargets.length > 0;
+        const labelEn = translationButton.dataset.toggleLabelEn || translationButton.textContent.trim() || 'English';
         const labelKo = translationButton.dataset.toggleLabelKo || '한국어';
         translationButton.dataset.toggleLabelEn = labelEn;
         translationButton.dataset.toggleLabelKo = labelKo;
 
-        const updateLanguage = () => {
+        if (hasLocalTranslations) {
             translationTargets.forEach((element) => {
-                const koreanText = element.dataset.localeKo ?? '';
-                const englishText = element.dataset.localeEn ?? '';
-                element.textContent = isEnglish ? englishText : koreanText;
+                if (!element.dataset.localeKo) {
+                    element.dataset.localeKo = element.textContent.trim();
+                }
             });
 
-            translationButton.textContent = isEnglish ? labelKo : labelEn;
-            translationButton.setAttribute('aria-pressed', String(isEnglish));
-        };
+            let isEnglish = false;
 
-        translationButton.addEventListener('click', () => {
-            isEnglish = !isEnglish;
+            const updateLanguage = () => {
+                translationTargets.forEach((element) => {
+                    const koreanText = element.dataset.localeKo ?? '';
+                    const englishText = element.dataset.localeEn ?? '';
+                    element.textContent = isEnglish ? englishText : koreanText;
+                });
+
+                translationButton.textContent = isEnglish ? labelKo : labelEn;
+                translationButton.setAttribute('aria-pressed', String(isEnglish));
+            };
+
+            translationButton.addEventListener('click', () => {
+                isEnglish = !isEnglish;
+                updateLanguage();
+            });
+
             updateLanguage();
-        });
-
-        updateLanguage();
+        } else {
+            translationButton.textContent = labelEn;
+            translationButton.setAttribute('aria-pressed', 'false');
+            translationButton.setAttribute('aria-label', '현재 페이지를 영어로 번역된 새 창에서 보기');
+            translationButton.addEventListener('click', () => {
+                const translateUrl = new URL('https://translate.google.com/translate');
+                translateUrl.searchParams.set('sl', 'auto');
+                translateUrl.searchParams.set('tl', 'en');
+                translateUrl.searchParams.set('u', window.location.href);
+                window.open(translateUrl.toString(), '_blank', 'noopener');
+            });
+        }
     }
 
-    const scrollButton = document.querySelector('[data-scroll-top]');
+    const darkModeToggle = ensureDarkModeToggle();
+    if (darkModeToggle) {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const storedTheme = getStoredTheme();
+        const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+        const updateDarkToggleLabel = () => {
+            const isDark = document.body.classList.contains('theme-dark');
+            darkModeToggle.setAttribute('aria-pressed', String(isDark));
+            darkModeToggle.innerHTML =
+                `<span class="dark-mode-toggle__icon" aria-hidden="true">${isDark ? '☀️' : '🌙'}</span>` +
+                `<span class="dark-mode-toggle__label">${isDark ? '라이트 모드' : '다크 모드'}</span>`;
+        };
+
+        applyTheme(initialTheme);
+        updateDarkToggleLabel();
+
+        darkModeToggle.addEventListener('click', () => {
+            const isDark = document.body.classList.contains('theme-dark');
+            const nextTheme = isDark ? 'light' : 'dark';
+            applyTheme(nextTheme);
+            storeTheme(nextTheme);
+            updateDarkToggleLabel();
+        });
+
+        if (window.matchMedia) {
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            const handleMediaChange = (event) => {
+                if (getStoredTheme()) {
+                    return;
+                }
+
+                applyTheme(event.matches ? 'dark' : 'light');
+                updateDarkToggleLabel();
+            };
+
+            if (typeof mediaQuery.addEventListener === 'function') {
+                mediaQuery.addEventListener('change', handleMediaChange);
+            } else if (typeof mediaQuery.addListener === 'function') {
+                mediaQuery.addListener(handleMediaChange);
+            }
+        }
+    }
+
+    const scrollButton = ensureScrollButton();
     if (scrollButton) {
         const toggleVisibility = () => {
             const shouldShow = window.scrollY > 240;
