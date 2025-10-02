@@ -255,51 +255,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const translationButton = ensureTranslationButton();
     if (translationButton) {
-        const translationTargets = document.querySelectorAll('[data-locale-en]');
-        const hasLocalTranslations = translationTargets.length > 0;
-        const labelEn = translationButton.dataset.toggleLabelEn || translationButton.textContent.trim() || 'English';
-        const labelKo = translationButton.dataset.toggleLabelKo || '한국어';
-        translationButton.dataset.toggleLabelEn = labelEn;
-        translationButton.dataset.toggleLabelKo = labelKo;
+        const defaultLabel =
+            translationButton.dataset.translateLabelEn ||
+            translationButton.dataset.toggleLabelEn ||
+            translationButton.textContent.trim() ||
+            'English';
+        const targetLang = translationButton.dataset.translateTarget || 'en';
+        const sourceLang = translationButton.dataset.translateSource || 'auto';
+        const ariaLabel =
+            translationButton.dataset.translateAriaLabel ||
+            '현재 페이지를 영어로 번역된 새 창에서 보기';
 
-        if (hasLocalTranslations) {
-            translationTargets.forEach((element) => {
-                if (!element.dataset.localeKo) {
-                    element.dataset.localeKo = element.textContent.trim();
-                }
-            });
+        translationButton.dataset.toggleLabelEn = defaultLabel;
+        translationButton.textContent = defaultLabel;
+        translationButton.setAttribute('aria-pressed', 'false');
+        translationButton.setAttribute('aria-label', ariaLabel);
 
-            let isEnglish = false;
-
-            const updateLanguage = () => {
-                translationTargets.forEach((element) => {
-                    const koreanText = element.dataset.localeKo ?? '';
-                    const englishText = element.dataset.localeEn ?? '';
-                    element.textContent = isEnglish ? englishText : koreanText;
-                });
-
-                translationButton.textContent = isEnglish ? labelKo : labelEn;
-                translationButton.setAttribute('aria-pressed', String(isEnglish));
-            };
-
-            translationButton.addEventListener('click', () => {
-                isEnglish = !isEnglish;
-                updateLanguage();
-            });
-
-            updateLanguage();
-        } else {
-            translationButton.textContent = labelEn;
-            translationButton.setAttribute('aria-pressed', 'false');
-            translationButton.setAttribute('aria-label', '현재 페이지를 영어로 번역된 새 창에서 보기');
-            translationButton.addEventListener('click', () => {
-                const translateUrl = new URL('https://translate.google.com/translate');
-                translateUrl.searchParams.set('sl', 'auto');
-                translateUrl.searchParams.set('tl', 'en');
-                translateUrl.searchParams.set('u', window.location.href);
-                window.open(translateUrl.toString(), '_blank', 'noopener');
-            });
-        }
+        translationButton.addEventListener('click', () => {
+            const translateUrl = new URL('https://translate.google.com/translate');
+            translateUrl.searchParams.set('sl', sourceLang);
+            translateUrl.searchParams.set('tl', targetLang);
+            translateUrl.searchParams.set('u', window.location.href);
+            window.open(translateUrl.toString(), '_blank', 'noopener');
+        });
     }
 
     const darkModeToggle = ensureDarkModeToggle();
