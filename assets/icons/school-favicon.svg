@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="School icon">
+  <defs>
+    <linearGradient id="roof" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f7bff" />
+      <stop offset="1" stop-color="#274bdb" />
+    </linearGradient>
+    <linearGradient id="building" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" />
+      <stop offset="1" stop-color="#dbe4ff" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#0f1f4c" />
+  <path d="M32 12L10 24l2.5 4.4L32 20.2l19.5 8.2L54 24z" fill="url(#roof)" />
+  <path d="M18 26h28v20H18z" fill="url(#building)" />
+  <path d="M26 30h12v16H26z" fill="#4f7bff" />
+  <path d="M30 34h4v12h-4z" fill="#ffffff" opacity="0.85" />
+  <path d="M14 46h36v4H14z" fill="#274bdb" opacity="0.9" />
+  <circle cx="32" cy="24" r="3" fill="#ffe27a" />
+</svg>

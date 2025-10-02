@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>서울 사이버 캠퍼스</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/school-favicon.svg" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -367,27 +368,189 @@
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-text">
-                    <span class="badge">Smart Learning Platform</span>
-                    <h1>시간과 장소의 제약 없이 성장하는 미래형 대학</h1>
-                    <p>
-                        서울 사이버 캠퍼스는 일과 학습의 균형을 돕는 유연한 온라인 교육 환경을 제공합니다.
-                        언제 어디서나 수준 높은 강의를 수강하고, 글로벌 인재로 도약하세요.
-                    </p>
-                    <div class="hero-actions">
-                        <a class="btn primary" href="#programs">전공 살펴보기</a>
-                        <a class="btn ghost" href="#tour">캠퍼스 둘러보기</a>
+        <section
+            class="hero-slider"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="주요 안내 배너"
+            data-hero-slider
+            data-hero-interval="8000"
+            tabindex="0"
+        >
+            <div class="hero-slider__track" data-hero-track>
+                <article
+                    id="hero-slide-1"
+                    class="hero hero-slide is-active"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="1 / 5"
+                    aria-hidden="false"
+                    style="--hero-background: radial-gradient(circle at top left, rgba(58, 111, 247, 0.16), transparent 60%), linear-gradient(135deg, #f8fbff 0%, #ffffff 65%);"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">Smart Learning Platform</span>
+                            <h1>시간과 장소의 제약 없이 성장하는 미래형 대학</h1>
+                            <p>
+                                서울 사이버 캠퍼스는 일과 학습의 균형을 돕는 유연한 온라인 교육 환경을 제공합니다.
+                                언제 어디서나 수준 높은 강의를 수강하고, 글로벌 인재로 도약하세요.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="#programs">전공 살펴보기</a>
+                                <a class="btn ghost" href="#tour">캠퍼스 둘러보기</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>2024 신·편입학 모집</strong>
+                                <p>온라인 원서 접수 마감: 12.31</p>
+                                <a href="#apply">지원 일정 확인</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="hero-visual" aria-hidden="true">
-                    <div class="floating-card">
-                        <strong>2024 신·편입학 모집</strong>
-                        <p>온라인 원서 접수 마감: 12.31</p>
-                        <a href="#apply">지원 일정 확인</a>
+                </article>
+                <article
+                    id="hero-slide-2"
+                    class="hero hero-slide"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="2 / 5"
+                    aria-hidden="true"
+                    style="--hero-background: linear-gradient(135deg, #0f1f4c 0%, #274bdb 55%, #6a8bff 100%); --badge-background: rgba(255, 255, 255, 0.22); --badge-color: #ffffff; --hero-text-color: #ffffff; --hero-body-color: rgba(255, 255, 255, 0.82); --hero-ghost-color: #ffffff; --hero-ghost-border: rgba(255, 255, 255, 0.65); --hero-ghost-hover: rgba(255, 255, 255, 0.18); --floating-card-bg: rgba(15, 31, 76, 0.78); --floating-card-color: #ffffff; --floating-card-link: #e5ecff;"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">AI · Data Science</span>
+                            <h1>산업 현장이 주목하는 데이터 사이언스 교육</h1>
+                            <p>
+                                캡스톤 프로젝트와 기업 협업 과정을 통해 실무에서 바로 활용 가능한 AI 역량을 키웁니다.
+                                최신 트렌드를 반영한 온라인 커리큘럼을 경험해 보세요.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="programs.html#ai">AI 학부 살펴보기</a>
+                                <a class="btn ghost" href="industry-collaboration.html">산업 협력 사례</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>데이터 분석 부트캠프</strong>
+                                <p>기업 멘토와 함께하는 6주 집중 과정</p>
+                                <a href="programs.html#ai">과정 자세히 보기</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </article>
+                <article
+                    id="hero-slide-3"
+                    class="hero hero-slide"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="3 / 5"
+                    aria-hidden="true"
+                    style="--hero-background: linear-gradient(135deg, #fef6e4 0%, #fde7ff 60%, #ffffff 100%); --badge-background: #ffafcc; --hero-text-color: #2a1a2f; --hero-body-color: #7a4a64; --hero-ghost-color: #d7467c; --hero-ghost-border: #d7467c; --hero-ghost-hover: rgba(215, 70, 124, 0.12); --floating-card-link: #c71f63;"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">Global Exchange</span>
+                            <h1>해외 대학과 함께하는 글로벌 융합 프로그램</h1>
+                            <p>
+                                세계 각국의 파트너 대학과 온라인 공동 수업을 운영하며, 글로벌 프로젝트를 통해 실전 협업 능력을
+                                강화합니다.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="#global">국제교류 바로가기</a>
+                                <a class="btn ghost" href="partnerships.html">협력 기관 보기</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>글로벌 인턴십</strong>
+                                <p>해외 파트너 기업과 공동 프로젝트 진행</p>
+                                <a href="#global">지원 안내 확인</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    id="hero-slide-4"
+                    class="hero hero-slide"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="4 / 5"
+                    aria-hidden="true"
+                    style="--hero-background: linear-gradient(140deg, #ecfdf3 0%, #d1f8e4 55%, #ffffff 100%); --badge-background: #31c48d; --badge-color: #043927; --hero-body-color: #3c6d58; --hero-ghost-color: #108a5a; --hero-ghost-border: #108a5a; --hero-ghost-hover: rgba(16, 138, 90, 0.12); --floating-card-link: #0b6c45;"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">Scholarship &amp; Support</span>
+                            <h1>누구나 학업에 집중할 수 있도록 탄탄한 지원</h1>
+                            <p>
+                                성적우수·재직자·신입생 장학 등 상황에 맞춘 다양한 장학 혜택과 맞춤형 학습 코칭을 제공합니다.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="#support">장학 제도 확인</a>
+                                <a class="btn ghost" href="support.html#coaching">학습 코칭 안내</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>2024 장학 프로그램</strong>
+                                <p>신입생 전원 온라인 학습 지원 키트 제공</p>
+                                <a href="#support">혜택 자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    id="hero-slide-5"
+                    class="hero hero-slide"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="5 / 5"
+                    aria-hidden="true"
+                    style="--hero-background: linear-gradient(135deg, #f0f4ff 0%, #dae2ff 45%, #ffffff 100%); --badge-background: #9aa6ff; --badge-color: #ffffff; --hero-body-color: #4e5c9a; --hero-ghost-color: #4f5edb; --hero-ghost-border: #4f5edb; --hero-ghost-hover: rgba(79, 94, 219, 0.12);"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">Student Life</span>
+                            <h1>온·오프라인이 연결된 커뮤니티 기반 학습</h1>
+                            <p>
+                                지역 스터디 모임과 온라인 동아리, 멘토링 플랫폼을 통해 서로 배우고 성장하는 학습 공동체를 만들어갑니다.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="campus-life.html">캠퍼스 라이프 살펴보기</a>
+                                <a class="btn ghost" href="news.html#events">주요 행사 일정</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>SDU 커뮤니티 허브</strong>
+                                <p>멘토링 · 스터디 그룹 · 진로 코칭 제공</p>
+                                <a href="support.html">서비스 알아보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="hero-slider__controls">
+                <button type="button" class="hero-slider__control" data-hero-prev aria-label="이전 배너">
+                    <span aria-hidden="true">&#10094;</span>
+                </button>
+                <button type="button" class="hero-slider__control" data-hero-next aria-label="다음 배너">
+                    <span aria-hidden="true">&#10095;</span>
+                </button>
+            </div>
+            <div class="hero-slider__dots" role="tablist">
+                <button type="button" role="tab" class="hero-slider__dot is-active" data-hero-dot="0" aria-controls="hero-slide-1" aria-selected="true" aria-label="1번 배너"></button>
+                <button type="button" role="tab" class="hero-slider__dot" data-hero-dot="1" aria-controls="hero-slide-2" aria-selected="false" aria-label="2번 배너"></button>
+                <button type="button" role="tab" class="hero-slider__dot" data-hero-dot="2" aria-controls="hero-slide-3" aria-selected="false" aria-label="3번 배너"></button>
+                <button type="button" role="tab" class="hero-slider__dot" data-hero-dot="3" aria-controls="hero-slide-4" aria-selected="false" aria-label="4번 배너"></button>
+                <button type="button" role="tab" class="hero-slider__dot" data-hero-dot="4" aria-controls="hero-slide-5" aria-selected="false" aria-label="5번 배너"></button>
             </div>
         </section>
 
@@ -645,5 +808,6 @@
             </div>
         </div>
     </footer>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
