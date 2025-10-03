@@ -1305,6 +1305,100 @@ body.theme-dark .dark-mode-toggle {
     font-weight: 600;
 }
 
+.video-slider {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.video-slider__viewport {
+    position: relative;
+}
+
+.video-slider__track {
+    position: relative;
+}
+
+.video-slider__slide {
+    display: none;
+}
+
+.video-slider__slide.is-active {
+    display: block;
+    animation: videoSlideFade 360ms ease;
+}
+
+.video-slider__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.video-slider__nav {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 31, 76, 0.16);
+    background: var(--white);
+    color: var(--primary-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: background 160ms ease, color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.video-slider__nav:hover,
+.video-slider__nav:focus {
+    background: rgba(58, 111, 247, 0.1);
+    color: var(--primary);
+    border-color: rgba(58, 111, 247, 0.28);
+    box-shadow: 0 10px 20px rgba(15, 31, 76, 0.08);
+}
+
+.video-slider__dots {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.video-slider__dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 999px;
+    background: rgba(15, 31, 76, 0.2);
+    border: 0;
+    padding: 0;
+    transition: background 160ms ease, transform 160ms ease;
+}
+
+.video-slider__dot.is-active,
+.video-slider__dot:focus,
+.video-slider__dot:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+.video-slider__dot:focus-visible,
+.video-slider__nav:focus-visible {
+    outline: 3px solid rgba(58, 111, 247, 0.45);
+    outline-offset: 3px;
+}
+
+@keyframes videoSlideFade {
+    from {
+        opacity: 0.4;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .campus-video__description {
     color: var(--muted);
     line-height: 1.6;
