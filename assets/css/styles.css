@@ -233,6 +233,7 @@ img {
     letter-spacing: normal;
     text-transform: none;
     text-align: left;
+    align-items: flex-start;
 }
 
 .logo__line {
@@ -241,6 +242,7 @@ img {
 
 .logo__line--secondary {
     font-weight: 700;
+    font-size: 0.65rem;
 }
 
 @media (max-width: 900px) {
