@@ -232,7 +232,8 @@ img {
     color: var(--primary);
     letter-spacing: normal;
     text-transform: none;
-    text-align: left;
+    text-align: right;
+    align-items: flex-end;
     justify-content: flex-end;
 }
 
