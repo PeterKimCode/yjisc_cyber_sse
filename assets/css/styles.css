@@ -1206,7 +1206,22 @@ body.theme-dark .dark-mode-toggle {
     border-radius: 1.5rem;
     padding: 2.5rem;
     display: grid;
-    gap: 1rem;
+    gap: 1.5rem;
+}
+
+.campus-video {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.campus-video h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.campus-video__description {
+    color: var(--muted);
+    line-height: 1.6;
 }
 
 .stats {
