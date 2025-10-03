@@ -233,7 +233,7 @@ img {
     letter-spacing: normal;
     text-transform: none;
     text-align: left;
-    align-items: flex-start;
+    justify-content: flex-end;
 }
 
 .logo__line {
