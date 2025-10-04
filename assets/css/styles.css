@@ -417,6 +417,24 @@ img {
     font-size: 0.8rem;
 }
 
+.mega-promo {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.mega-promo strong {
+    font-size: 1.05rem;
+}
+
+.mega-promo p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+}
+
 .content-page {
     background: var(--white);
 }
