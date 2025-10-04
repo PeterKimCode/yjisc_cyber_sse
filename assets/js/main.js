@@ -36,6 +36,124 @@ const initialize = () => {
         return ctaGroup;
     };
 
+    const setupMegaMenuForTouch = () => {
+        const nav = document.querySelector('.main-nav');
+        if (!nav) {
+            return;
+        }
+
+        const navItems = Array.from(nav.querySelectorAll('li.has-mega'));
+        if (navItems.length === 0) {
+            return;
+        }
+
+        const coarseQuery =
+            typeof window.matchMedia === 'function'
+                ? window.matchMedia('(hover: none) and (pointer: coarse)')
+                : null;
+
+        const detectTouchEnvironment = () => {
+            const hasTouchEvent =
+                'ontouchstart' in window ||
+                (typeof navigator !== 'undefined' && Number(navigator.maxTouchPoints) > 0);
+            return Boolean((coarseQuery && coarseQuery.matches) || hasTouchEvent);
+        };
+
+        let touchEnabled = detectTouchEnvironment();
+
+        const closeAll = () => {
+            navItems.forEach((item) => {
+                item.classList.remove('is-open');
+                const trigger = item.querySelector(':scope > a');
+                if (trigger) {
+                    trigger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        };
+
+        const updateTouchState = () => {
+            const nextState = detectTouchEnvironment();
+            if (touchEnabled === nextState) {
+                return;
+            }
+
+            touchEnabled = nextState;
+            if (!touchEnabled) {
+                closeAll();
+            }
+        };
+
+        navItems.forEach((item) => {
+            const trigger = item.querySelector(':scope > a');
+            if (!trigger) {
+                return;
+            }
+
+            trigger.setAttribute('aria-expanded', 'false');
+
+            trigger.addEventListener('click', (event) => {
+                if (!touchEnabled) {
+                    closeAll();
+                    return;
+                }
+
+                const isOpen = item.classList.contains('is-open');
+                if (!isOpen) {
+                    event.preventDefault();
+                    closeAll();
+                    item.classList.add('is-open');
+                    trigger.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            item.addEventListener('focusout', (event) => {
+                if (!touchEnabled) {
+                    return;
+                }
+
+                if (!item.contains(event.relatedTarget)) {
+                    item.classList.remove('is-open');
+                    trigger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        const megaLinks = nav.querySelectorAll('.mega-menu a');
+        megaLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                if (!touchEnabled) {
+                    return;
+                }
+
+                closeAll();
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!touchEnabled) {
+                return;
+            }
+
+            if (!nav.contains(event.target)) {
+                closeAll();
+            }
+        });
+
+        if (coarseQuery) {
+            const handleChange = () => {
+                updateTouchState();
+            };
+
+            if (typeof coarseQuery.addEventListener === 'function') {
+                coarseQuery.addEventListener('change', handleChange);
+            } else if (typeof coarseQuery.addListener === 'function') {
+                coarseQuery.addListener(handleChange);
+            }
+        }
+
+        window.addEventListener('resize', updateTouchState);
+    };
+
     const ensureTranslationButton = () => {
         let translationButton = document.querySelector('[data-translate-toggle]');
         if (translationButton) {
@@ -121,6 +239,8 @@ const initialize = () => {
 
         window.localStorage.setItem('preferred-theme', theme);
     };
+
+    setupMegaMenuForTouch();
 
     const slider = document.querySelector('[data-hero-slider]');
 
