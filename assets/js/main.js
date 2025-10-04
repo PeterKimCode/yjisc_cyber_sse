@@ -3,7 +3,12 @@ if (root && !root.classList.contains('js-enabled')) {
     root.classList.add('js-enabled');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+const initialize = () => {
+    if (initialize.hasRun) {
+        return;
+    }
+    initialize.hasRun = true;
+
     const isStorageAvailable = (() => {
         try {
             const key = '__sdu-storage-check__';
@@ -481,4 +486,27 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', toggleVisibility, { passive: true });
         toggleVisibility();
     }
-});
+};
+
+const runWhenReady = () => {
+    if (initialize.hasRun) {
+        return;
+    }
+
+    if (document.querySelector('.site-header .container') || window.__includesReady) {
+        initialize();
+        return;
+    }
+
+    const handleIncludesReady = () => {
+        initialize();
+    };
+
+    document.addEventListener('includes:ready', handleIncludesReady, { once: true });
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runWhenReady);
+} else {
+    runWhenReady();
+}
