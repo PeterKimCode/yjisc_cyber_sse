@@ -354,7 +354,8 @@ img {
 }
 
 .has-mega:hover .mega-menu,
-.has-mega:focus-within .mega-menu {
+.has-mega:focus-within .mega-menu,
+.has-mega.is-open .mega-menu {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
