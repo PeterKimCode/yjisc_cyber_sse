@@ -529,7 +529,7 @@ const initialize = () => {
             translationButton.textContent.trim() ||
             'English';
         const targetLang = translationButton.dataset.translateTarget || 'en';
-        const sourceLang = translationButton.dataset.translateSource || 'auto';
+        const sourceLang = translationButton.dataset.translateSource || 'ko';
         const ariaLabel =
             translationButton.dataset.translateAriaLabel ||
             '현재 페이지를 영어로 번역된 새 창에서 보기';
@@ -540,10 +540,11 @@ const initialize = () => {
         translationButton.setAttribute('aria-label', ariaLabel);
 
         translationButton.addEventListener('click', () => {
-            const translateUrl = new URL('https://translate.google.com/translate');
-            translateUrl.searchParams.set('sl', sourceLang);
-            translateUrl.searchParams.set('tl', targetLang);
-            translateUrl.searchParams.set('u', window.location.href);
+            const translateUrl = new URL('https://papago.naver.net/website');
+            translateUrl.searchParams.set('locale', targetLang);
+            translateUrl.searchParams.set('source', sourceLang);
+            translateUrl.searchParams.set('target', targetLang);
+            translateUrl.searchParams.set('url', window.location.href);
             window.open(translateUrl.toString(), '_blank', 'noopener');
         });
     }
