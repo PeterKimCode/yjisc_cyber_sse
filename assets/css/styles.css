@@ -977,10 +977,6 @@ body.theme-dark .dark-mode-toggle {
     align-items: start;
 }
 
-.department-hero__layout.has-faculty {
-    grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
-}
-
 .department-hero__summary {
     display: flex;
     flex-direction: column;
@@ -1086,15 +1082,6 @@ body.theme-dark .dark-mode-toggle {
     gap: 1.5rem;
 }
 
-.department-hero__faculty--preview {
-    align-self: stretch;
-    max-width: 28rem;
-}
-
-.department-hero__faculty--preview[hidden] {
-    display: none;
-}
-
 .department-hero__faculty h2 {
     font-size: 1.35rem;
     margin: 0;
@@ -1171,17 +1158,12 @@ body.theme-dark .dark-mode-toggle {
 }
 
 @media (max-width: 960px) {
-    .department-hero__layout,
-    .department-hero__layout.has-faculty {
+    .department-hero__layout {
         grid-template-columns: 1fr;
     }
 
     .department-hero__faculty {
         padding: 1.5rem;
-    }
-
-    .department-hero__faculty--preview {
-        max-width: none;
     }
 }
 
