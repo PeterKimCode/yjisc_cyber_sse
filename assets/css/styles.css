@@ -1726,7 +1726,7 @@ body.theme-dark .dark-mode-toggle {
 }
 
 .cta-banner {
-    padding: 4rem 0;
+    padding: 2.67rem 0;
     background: linear-gradient(135deg, rgba(58, 111, 247, 0.9), rgba(58, 111, 247, 0.7));
     color: var(--white);
     text-align: center;
@@ -1734,7 +1734,7 @@ body.theme-dark .dark-mode-toggle {
 
 .cta-banner p {
     max-width: 32rem;
-    margin: 0.75rem auto 2rem;
+    margin: 0.75rem auto 1.33rem;
 }
 
 .video-showcase {
@@ -1777,14 +1777,14 @@ body.theme-dark .dark-mode-toggle {
 .site-footer {
     background: #121a2f;
     color: rgba(255, 255, 255, 0.78);
-    padding: 3rem 0 2rem;
+    padding: 2rem 0 1.33rem;
 }
 
 .footer-top {
     display: grid;
-    gap: 2.5rem;
+    gap: 1.67rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.67rem;
 }
 
 .footer-links ul {
@@ -1806,7 +1806,7 @@ body.theme-dark .dark-mode-toggle {
     align-items: center;
     gap: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     font-size: 0.85rem;
 }
 
