@@ -557,6 +557,7 @@ const initialize = () => {
                     heroFacultyPreview.setAttribute('aria-hidden', 'true');
                     heroFacultyPreview.setAttribute('hidden', '');
                     heroFacultyPreview.classList.add('department-hero__faculty--preview');
+                    heroFacultyPreview.classList.add('department-hero__summary');
 
                     const previewCards = heroFacultyPreview.querySelectorAll('.faculty-card');
                     previewCards.forEach((card, index) => {
