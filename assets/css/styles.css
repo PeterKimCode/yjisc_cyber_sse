@@ -1035,13 +1035,17 @@ body.theme-dark .dark-mode-toggle {
     font-size: 0.95rem;
 }
 
+.department-hero .department-tabs {
+    margin-top: 2.5rem;
+}
+
 .department-tabs {
     border-top: 1px solid rgba(31, 42, 68, 0.08);
     border-bottom: 1px solid rgba(31, 42, 68, 0.08);
     background: var(--white);
 }
 
-.department-tabs .container {
+.department-tabs__list {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
@@ -1184,7 +1188,7 @@ body.theme-dark .dark-mode-toggle {
     padding: 3.5rem 0;
 }
 
-.department-tabs + .department-section {
+.department-hero + .department-section {
     padding-top: 0;
 }
 
