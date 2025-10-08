@@ -535,6 +535,7 @@ const initialize = () => {
             }
 
             const heroLayout = tabGroup.closest('.department-hero')?.querySelector('.department-hero__layout') || null;
+            let heroFacultyPreview = heroLayout?.querySelector('[data-hero-faculty-preview]') || null;
 
             const getPanel = (tab) => {
                 const controls = tab.getAttribute('aria-controls');
@@ -545,13 +546,45 @@ const initialize = () => {
                 return document.getElementById(controls);
             };
 
+            const facultyTab = tabs.find((tab) => tab.getAttribute('aria-controls') === 'faculty') || null;
+            const facultyPanel = facultyTab ? getPanel(facultyTab) : null;
+
+            if (!heroFacultyPreview && heroLayout && facultyPanel) {
+                const previewSource = facultyPanel.querySelector('.department-hero__faculty');
+                if (previewSource) {
+                    heroFacultyPreview = previewSource.cloneNode(true);
+                    heroFacultyPreview.setAttribute('data-hero-faculty-preview', '');
+                    heroFacultyPreview.setAttribute('aria-hidden', 'true');
+                    heroFacultyPreview.setAttribute('hidden', '');
+                    heroFacultyPreview.classList.add('department-hero__faculty--preview');
+
+                    const previewCards = heroFacultyPreview.querySelectorAll('.faculty-card');
+                    previewCards.forEach((card, index) => {
+                        if (index > 1) {
+                            card.remove();
+                        }
+                    });
+
+                    heroLayout.appendChild(heroFacultyPreview);
+                }
+            }
+
             const updateHeroLayout = (activeTab) => {
                 if (!heroLayout) {
                     return;
                 }
 
                 const controls = activeTab?.getAttribute('aria-controls');
-                heroLayout.classList.toggle('has-faculty', controls === 'faculty');
+                const shouldShowFaculty = controls === 'faculty' && heroFacultyPreview;
+                heroLayout.classList.toggle('has-faculty', Boolean(shouldShowFaculty));
+
+                if (heroFacultyPreview) {
+                    if (shouldShowFaculty) {
+                        heroFacultyPreview.removeAttribute('hidden');
+                    } else {
+                        heroFacultyPreview.setAttribute('hidden', '');
+                    }
+                }
             };
 
             const setActive = (targetTab, options = {}) => {
