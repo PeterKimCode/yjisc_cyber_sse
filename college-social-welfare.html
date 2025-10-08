@@ -15,19 +15,49 @@
     <main>
         <section class="department-hero">
             <div class="container">
-                <span class="department-hero__label" aria-label="대학 과정">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3zm0 6.74l7.53-3.77L12 4.2 4.47 5.97 12 9.74zM21 10.5v3.75c0 2.5-4.03 6.25-9 6.25s-9-3.75-9-6.25V10.5l9 4.5 9-4.5z"/></svg>
-                    Undergraduate Program
-                </span>
-                <h1>복지학과</h1>
-                <p>
-                    복지학과는 사회적 약자를 지원하고 지역사회 복지를 증진할 전문 사회복지사를 양성합니다.
-                    정책 이해와 사례관리, 지역사회 개발을 통합적으로 학습합니다.
-                </p>
-                <div class="department-meta">
-                    <span>학위과정: 학사(BA)</span>
-                    <span>소속: 대학교</span>
-                    <span>표준수업연한: 4년</span>
+                <div class="department-hero__layout">
+                    <div class="department-hero__summary">
+                        <span class="department-hero__label" aria-label="대학 과정">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3zm0 6.74l7.53-3.77L12 4.2 4.47 5.97 12 9.74zM21 10.5v3.75c0 2.5-4.03 6.25-9 6.25s-9-3.75-9-6.25V10.5l9 4.5 9-4.5z"/></svg>
+                            Undergraduate Program
+                        </span>
+                        <h1>복지학과</h1>
+                        <p>
+                            복지학과는 사회적 약자를 지원하고 지역사회 복지를 증진할 전문 사회복지사를 양성합니다.
+                            정책 이해와 사례관리, 지역사회 개발을 통합적으로 학습합니다.
+                        </p>
+                        <div class="department-meta">
+                            <span>학위과정: 학사(BA)</span>
+                            <span>소속: 대학교</span>
+                            <span>표준수업연한: 4년</span>
+                        </div>
+                    </div>
+                    <aside class="department-hero__faculty" aria-label="대표 교수진">
+                        <h2>대표 교수진</h2>
+                        <p class="department-hero__faculty-intro">사회정책과 현장 상담 경험을 갖춘 교수진이 지역사회와 연계된 실천 중심 교육을 진행합니다.</p>
+                        <div class="department-hero__faculty-list">
+                            <article class="faculty-card">
+                                <figure class="faculty-card__photo">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZTlmOGY1Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiMxMmI4ODYiLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjMGI1MTNkIiBvcGFjaXR5PSIwLjE4Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiMxMmI4ODYiIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="장민석 교수의 프로필 사진" loading="lazy" />
+                                </figure>
+                                <div class="faculty-card__body">
+                                    <p class="faculty-card__name">장민석 교수</p>
+                                    <p class="faculty-card__role">사회복지정책</p>
+                                    <p class="faculty-card__focus">취약계층 지원 정책 평가와 지역사회 복지 거버넌스 구축을 연구합니다.</p>
+                                </div>
+                            </article>
+                            <article class="faculty-card">
+                                <figure class="faculty-card__photo">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZmZlY2U4Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiNmZjdiNWEiLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjOGIzMjFmIiBvcGFjaXR5PSIwLjE4Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiNmZjdiNWEiIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="오하늘 교수의 프로필 사진" loading="lazy" />
+                                </figure>
+                                <div class="faculty-card__body">
+                                    <p class="faculty-card__name">오하늘 교수</p>
+                                    <p class="faculty-card__role">임상사회복지</p>
+                                    <p class="faculty-card__focus">트라우마 회복 프로그램과 가족 상담 사례 연구를 통해 현장 대응력을 높입니다.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </aside>
                 </div>
             </div>
             <nav class="department-tabs" aria-label="복지학과 메뉴">

@@ -15,19 +15,49 @@
     <main>
         <section class="department-hero">
             <div class="container">
-                <span class="department-hero__label" aria-label="대학 과정">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3zm0 6.74l7.53-3.77L12 4.2 4.47 5.97 12 9.74zM21 10.5v3.75c0 2.5-4.03 6.25-9 6.25s-9-3.75-9-6.25V10.5l9 4.5 9-4.5z"/></svg>
-                    Undergraduate Program
-                </span>
-                <h1>부동산학과</h1>
-                <p>
-                    부동산학과는 부동산 개발, 금융, 자산관리를 통합적으로 학습하여 부동산 전문 경영인을 양성합니다.
-                    데이터 분석과 법제 이해를 바탕으로 지속가능한 도시와 주거환경을 설계할 수 있는 능력을 키웁니다.
-                </p>
-                <div class="department-meta">
-                    <span>학위과정: 학사(BBA)</span>
-                    <span>소속: 대학교</span>
-                    <span>표준수업연한: 4년</span>
+                <div class="department-hero__layout">
+                    <div class="department-hero__summary">
+                        <span class="department-hero__label" aria-label="대학 과정">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3zm0 6.74l7.53-3.77L12 4.2 4.47 5.97 12 9.74zM21 10.5v3.75c0 2.5-4.03 6.25-9 6.25s-9-3.75-9-6.25V10.5l9 4.5 9-4.5z"/></svg>
+                            Undergraduate Program
+                        </span>
+                        <h1>부동산학과</h1>
+                        <p>
+                            부동산학과는 부동산 개발, 금융, 자산관리를 통합적으로 학습하여 부동산 전문 경영인을 양성합니다.
+                            데이터 분석과 법제 이해를 바탕으로 지속가능한 도시와 주거환경을 설계할 수 있는 능력을 키웁니다.
+                        </p>
+                        <div class="department-meta">
+                            <span>학위과정: 학사(BBA)</span>
+                            <span>소속: 대학교</span>
+                            <span>표준수업연한: 4년</span>
+                        </div>
+                    </div>
+                    <aside class="department-hero__faculty" aria-label="대표 교수진">
+                        <h2>대표 교수진</h2>
+                        <p class="department-hero__faculty-intro">부동산 금융과 자산평가 분야 전문가들이 도시재생과 투자 전략 프로젝트를 밀착 지도합니다.</p>
+                        <div class="department-hero__faculty-list">
+                            <article class="faculty-card">
+                                <figure class="faculty-card__photo">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZWFmMGZmIi8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiMzYTZmZjciLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjMWYyYTQ0IiBvcGFjaXR5PSIwLjE2Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiMzYTZmZjciIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="이상훈 교수의 프로필 사진" loading="lazy" />
+                                </figure>
+                                <div class="faculty-card__body">
+                                    <p class="faculty-card__name">이상훈 교수</p>
+                                    <p class="faculty-card__role">부동산금융</p>
+                                    <p class="faculty-card__focus">도시재생 투자 전략과 자산관리 모델을 설계하며 빅데이터 기반 분석을 지도합니다.</p>
+                                </div>
+                            </article>
+                            <article class="faculty-card">
+                                <figure class="faculty-card__photo">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZmZlY2U4Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiNmZjdiNWEiLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjOGIzMjFmIiBvcGFjaXR5PSIwLjE4Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiNmZjdiNWEiIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="김현주 교수의 프로필 사진" loading="lazy" />
+                                </figure>
+                                <div class="faculty-card__body">
+                                    <p class="faculty-card__name">김현주 교수</p>
+                                    <p class="faculty-card__role">부동산 공시·평가</p>
+                                    <p class="faculty-card__focus">부동산 빅데이터 가치 분석과 공공·민간 평가 실무를 아우르는 사례 연구를 제공합니다.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </aside>
                 </div>
             </div>
             <nav class="department-tabs" aria-label="부동산학과 메뉴">
