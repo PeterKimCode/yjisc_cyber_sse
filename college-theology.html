@@ -15,7 +15,7 @@
     <main>
         <section class="department-hero">
             <div class="container">
-                <div class="department-hero__layout">
+                <div class="department-hero__layout has-faculty">
                     <div class="department-hero__summary">
                         <span class="department-hero__label" aria-label="대학 과정">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3zm0 6.74l7.53-3.77L12 4.2 4.47 5.97 12 9.74zM21 10.5v3.75c0 2.5-4.03 6.25-9 6.25s-9-3.75-9-6.25V10.5l9 4.5 9-4.5z"/></svg>
@@ -32,7 +32,7 @@
                             <span>표준수업연한: 4년</span>
                         </div>
                     </div>
-                    <aside class="department-hero__faculty" aria-label="대표 교수진">
+                    <aside id="faculty" class="department-hero__faculty" aria-label="대표 교수진" role="tabpanel" aria-labelledby="tab-faculty" tabindex="0">
                         <h2>대표 교수진</h2>
                         <p class="department-hero__faculty-intro">신학 전통과 현대 사역 경험을 갖춘 교수진이 영성, 선교, 상담을 아우르는 통합 교육을 제공합니다.</p>
                         <div class="department-hero__faculty-list">
@@ -60,17 +60,18 @@
                     </aside>
                 </div>
             </div>
-            <nav class="department-tabs" aria-label="신학과 메뉴">
-                <div class="container">
-                    <a class="is-active" href="#overview">학과소개</a>
-                    <a href="#curriculum">교과과정</a>
-                    <a href="#career">진로 및 진출</a>
-                    <a href="#support">학생지원</a>
-                </div>
-            </nav>
+                        <nav class="department-tabs" aria-label="신학과 메뉴">
+                            <div class="container" role="tablist">
+                                <a class="is-active" id="tab-overview" role="tab" aria-controls="overview" aria-selected="true" href="#overview">학과소개</a>
+                                <a id="tab-curriculum" role="tab" aria-controls="curriculum" aria-selected="false" tabindex="-1" href="#curriculum">교과과정</a>
+                                <a id="tab-career" role="tab" aria-controls="career" aria-selected="false" tabindex="-1" href="#career">진로 및 진출</a>
+                                <a id="tab-support" role="tab" aria-controls="support" aria-selected="false" tabindex="-1" href="#support">학생지원</a>
+                                <a id="tab-faculty" role="tab" aria-controls="faculty" aria-selected="false" tabindex="-1" href="#faculty">대표 교수진</a>
+                            </div>
+                        </nav>
         </section>
 
-        <section id="overview" class="department-section">
+        <section id="overview" class="department-section" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
             <div class="container department-layout department-layout--split">
                 <div>
                     <h2>학과소개</h2>
@@ -105,7 +106,7 @@
             </div>
         </section>
 
-        <section id="curriculum" class="department-section">
+        <section id="curriculum" class="department-section" role="tabpanel" aria-labelledby="tab-curriculum" tabindex="0">
             <div class="container department-layout">
                 <div>
                     <h2>교과과정 안내</h2>
@@ -143,7 +144,7 @@
             </div>
         </section>
 
-        <section id="career" class="department-section">
+        <section id="career" class="department-section" role="tabpanel" aria-labelledby="tab-career" tabindex="0">
             <div class="container department-layout">
                 <h2>진로 및 진출 분야</h2>
                 <p>
@@ -167,7 +168,7 @@
             </div>
         </section>
 
-        <section id="support" class="department-section">
+        <section id="support" class="department-section" role="tabpanel" aria-labelledby="tab-support" tabindex="0">
             <div class="container department-layout department-layout--split">
                 <div>
                     <h2>학생 지원 프로그램</h2>

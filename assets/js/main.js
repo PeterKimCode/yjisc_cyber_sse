@@ -521,6 +521,164 @@ const initialize = () => {
         });
     }
 
+    const initDepartmentTabs = () => {
+        const tabGroups = document.querySelectorAll('.department-tabs');
+        if (tabGroups.length === 0) {
+            return;
+        }
+
+        tabGroups.forEach((tabGroup) => {
+            const tabList = tabGroup.querySelector('[role="tablist"]') || tabGroup;
+            const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+            if (tabs.length === 0) {
+                return;
+            }
+
+            const heroLayout = tabGroup.closest('.department-hero')?.querySelector('.department-hero__layout') || null;
+
+            const getPanel = (tab) => {
+                const controls = tab.getAttribute('aria-controls');
+                if (!controls) {
+                    return null;
+                }
+
+                return document.getElementById(controls);
+            };
+
+            const updateHeroLayout = (activeTab) => {
+                if (!heroLayout) {
+                    return;
+                }
+
+                const controls = activeTab?.getAttribute('aria-controls');
+                heroLayout.classList.toggle('has-faculty', controls === 'faculty');
+            };
+
+            const setActive = (targetTab, options = {}) => {
+                if (!targetTab) {
+                    return;
+                }
+
+                const { focus = false, updateHash = true } = options;
+                const activeControls = targetTab.getAttribute('aria-controls');
+
+                tabs.forEach((tab) => {
+                    const isActive = tab === targetTab;
+                    tab.classList.toggle('is-active', isActive);
+                    tab.setAttribute('aria-selected', String(isActive));
+                    tab.setAttribute('tabindex', isActive ? '0' : '-1');
+
+                    const panel = getPanel(tab);
+                    if (!panel) {
+                        return;
+                    }
+
+                    if (isActive) {
+                        panel.classList.add('is-active');
+                        panel.removeAttribute('hidden');
+                    } else {
+                        panel.classList.remove('is-active');
+                        panel.setAttribute('hidden', '');
+                    }
+                });
+
+                updateHeroLayout(targetTab);
+
+                if (updateHash && activeControls) {
+                    const newHash = `#${activeControls}`;
+                    if (window.location.hash !== newHash) {
+                        if (typeof window.history.replaceState === 'function') {
+                            window.history.replaceState(null, '', newHash);
+                        } else {
+                            window.location.hash = newHash;
+                        }
+                    }
+                }
+
+                if (focus) {
+                    targetTab.focus();
+                }
+            };
+
+            const focusTabByIndex = (index) => {
+                if (tabs.length === 0) {
+                    return;
+                }
+
+                const targetIndex = (index + tabs.length) % tabs.length;
+                const targetTab = tabs[targetIndex];
+                setActive(targetTab, { focus: true });
+            };
+
+            tabs.forEach((tab, index) => {
+                if (!tab.hasAttribute('aria-selected')) {
+                    const isActive = tab.classList.contains('is-active');
+                    tab.setAttribute('aria-selected', String(isActive));
+                }
+
+                if (!tab.hasAttribute('tabindex')) {
+                    tab.setAttribute('tabindex', tab.classList.contains('is-active') ? '0' : '-1');
+                }
+
+                tab.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    setActive(tab);
+                });
+
+                tab.addEventListener('keydown', (event) => {
+                    switch (event.key) {
+                        case 'ArrowRight':
+                        case 'ArrowDown':
+                            event.preventDefault();
+                            focusTabByIndex(index + 1);
+                            break;
+                        case 'ArrowLeft':
+                        case 'ArrowUp':
+                            event.preventDefault();
+                            focusTabByIndex(index - 1);
+                            break;
+                        case 'Home':
+                            event.preventDefault();
+                            focusTabByIndex(0);
+                            break;
+                        case 'End':
+                            event.preventDefault();
+                            focusTabByIndex(tabs.length - 1);
+                            break;
+                        default:
+                            break;
+                    }
+                });
+            });
+
+            const getTabByPanelId = (panelId) =>
+                tabs.find((tab) => tab.getAttribute('aria-controls') === panelId) || null;
+
+            const initialTab = tabs.find((tab) => tab.classList.contains('is-active')) || tabs[0];
+            setActive(initialTab, { updateHash: false });
+
+            const syncWithHash = (shouldFocus = false) => {
+                const hash = window.location.hash.replace('#', '');
+                if (!hash) {
+                    return;
+                }
+
+                const matchingTab = getTabByPanelId(hash);
+                if (matchingTab) {
+                    setActive(matchingTab, { focus: shouldFocus, updateHash: false });
+                }
+            };
+
+            syncWithHash();
+
+            window.addEventListener('hashchange', () => {
+                syncWithHash(true);
+            });
+        });
+    };
+
+    initDepartmentTabs();
+
     const translationButton = ensureTranslationButton();
     if (translationButton) {
         const defaultLabel =
