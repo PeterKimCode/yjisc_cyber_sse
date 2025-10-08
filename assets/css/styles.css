@@ -1184,6 +1184,10 @@ body.theme-dark .dark-mode-toggle {
     padding: 3.5rem 0;
 }
 
+.department-tabs + .department-section {
+    padding-top: 0;
+}
+
 .department-section:nth-of-type(even) {
     background: var(--bg);
 }
