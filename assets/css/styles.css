@@ -1086,6 +1086,15 @@ body.theme-dark .dark-mode-toggle {
     gap: 1.5rem;
 }
 
+.department-hero__faculty--preview {
+    align-self: stretch;
+    max-width: 28rem;
+}
+
+.department-hero__faculty--preview[hidden] {
+    display: none;
+}
+
 .department-hero__faculty h2 {
     font-size: 1.35rem;
     margin: 0;
@@ -1169,6 +1178,10 @@ body.theme-dark .dark-mode-toggle {
 
     .department-hero__faculty {
         padding: 1.5rem;
+    }
+
+    .department-hero__faculty--preview {
+        max-width: none;
     }
 }
 
