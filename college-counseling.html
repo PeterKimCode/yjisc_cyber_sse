@@ -15,19 +15,49 @@
     <main>
         <section class="department-hero">
             <div class="container">
-                <span class="department-hero__label" aria-label="대학 과정">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3zm0 6.74l7.53-3.77L12 4.2 4.47 5.97 12 9.74zM21 10.5v3.75c0 2.5-4.03 6.25-9 6.25s-9-3.75-9-6.25V10.5l9 4.5 9-4.5z"/></svg>
-                    Undergraduate Program
-                </span>
-                <h1>상담학과</h1>
-                <p>
-                    상담학과는 심리학과 상담 이론을 바탕으로 개인과 공동체의 변화를 돕는 전문 상담가를 양성합니다.
-                    온라인 기반 사례관리와 대면 슈퍼비전을 병행하여 실무 역량을 강화합니다.
-                </p>
-                <div class="department-meta">
-                    <span>학위과정: 학사(BA)</span>
-                    <span>소속: 대학교</span>
-                    <span>표준수업연한: 4년</span>
+                <div class="department-hero__layout">
+                    <div class="department-hero__summary">
+                        <span class="department-hero__label" aria-label="대학 과정">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3zm0 6.74l7.53-3.77L12 4.2 4.47 5.97 12 9.74zM21 10.5v3.75c0 2.5-4.03 6.25-9 6.25s-9-3.75-9-6.25V10.5l9 4.5 9-4.5z"/></svg>
+                            Undergraduate Program
+                        </span>
+                        <h1>상담학과</h1>
+                        <p>
+                            상담학과는 심리학과 상담 이론을 바탕으로 개인과 공동체의 변화를 돕는 전문 상담가를 양성합니다.
+                            온라인 기반 사례관리와 대면 슈퍼비전을 병행하여 실무 역량을 강화합니다.
+                        </p>
+                        <div class="department-meta">
+                            <span>학위과정: 학사(BA)</span>
+                            <span>소속: 대학교</span>
+                            <span>표준수업연한: 4년</span>
+                        </div>
+                    </div>
+                    <aside class="department-hero__faculty" aria-label="대표 교수진">
+                        <h2>대표 교수진</h2>
+                        <p class="department-hero__faculty-intro">임상과 코칭 경험을 갖춘 교수진이 다양한 연령과 조직을 위한 맞춤형 상담 프로그램을 지도합니다.</p>
+                        <div class="department-hero__faculty-list">
+                            <article class="faculty-card">
+                                <figure class="faculty-card__photo">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZWFmMGZmIi8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiMzYTZmZjciLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjMWYyYTQ0IiBvcGFjaXR5PSIwLjE2Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiMzYTZmZjciIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="이수연 교수의 프로필 사진" loading="lazy" />
+                                </figure>
+                                <div class="faculty-card__body">
+                                    <p class="faculty-card__name">이수연 교수</p>
+                                    <p class="faculty-card__role">상담심리</p>
+                                    <p class="faculty-card__focus">청소년 정서 지원과 가족 상담 프로그램 개발을 통해 현장 중심 역량을 강화합니다.</p>
+                                </div>
+                            </article>
+                            <article class="faculty-card">
+                                <figure class="faculty-card__photo">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZmZlY2U4Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiNmZjdiNWEiLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjOGIzMjFmIiBvcGFjaXR5PSIwLjE4Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiNmZjdiNWEiIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="정민우 교수의 프로필 사진" loading="lazy" />
+                                </figure>
+                                <div class="faculty-card__body">
+                                    <p class="faculty-card__name">정민우 교수</p>
+                                    <p class="faculty-card__role">코칭심리</p>
+                                    <p class="faculty-card__focus">진로 코칭과 조직 상담 프로젝트를 운영하며 실무형 상담 기법을 전수합니다.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </aside>
                 </div>
             </div>
             <nav class="department-tabs" aria-label="상담학과 메뉴">
