@@ -15,7 +15,7 @@
     <main>
         <section class="department-hero">
             <div class="container">
-                <div class="department-hero__layout has-faculty">
+                <div class="department-hero__layout">
                     <div class="department-hero__summary">
                         <span class="department-hero__label" aria-label="대학원 과정">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3zm0 6.74l7.53-3.77L12 4.2 4.47 5.97 12 9.74zM21 10.5v3.75c0 2.5-4.03 6.25-9 6.25s-9-3.75-9-6.25V10.5l9 4.5 9-4.5z"/></svg>
@@ -32,43 +32,17 @@
                             <span>표준수업연한: 2~4년</span>
                         </div>
                     </div>
-                    <aside id="faculty" class="department-hero__faculty" aria-label="대표 교수진" role="tabpanel" aria-labelledby="tab-faculty" tabindex="0">
-                        <h2>대표 교수진</h2>
-                        <p class="department-hero__faculty-intro">조직신학과 실천신학 분야의 석학들이 신학 연구와 목회 현장을 연결하는 심화 지도를 제공합니다.</p>
-                        <div class="department-hero__faculty-list">
-                            <article class="faculty-card">
-                                <figure class="faculty-card__photo">
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZWFmMGZmIi8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiMzYTZmZjciLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjMWYyYTQ0IiBvcGFjaXR5PSIwLjE2Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiMzYTZmZjciIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="정하늘 교수의 프로필 사진" loading="lazy" />
-                                </figure>
-                                <div class="faculty-card__body">
-                                    <p class="faculty-card__name">정하늘 교수</p>
-                                    <p class="faculty-card__role">조직신학</p>
-                                    <p class="faculty-card__focus">다학제 신학 담론과 목회 적용을 연결하는 연구를 이끌고 있습니다.</p>
-                                </div>
-                            </article>
-                            <article class="faculty-card">
-                                <figure class="faculty-card__photo">
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZmZlY2U4Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiNmZjdiNWEiLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjOGIzMjFmIiBvcGFjaXR5PSIwLjE4Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiNmZjdiNWEiIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="Samuel Lee 교수의 프로필 사진" loading="lazy" />
-                                </figure>
-                                <div class="faculty-card__body">
-                                    <p class="faculty-card__name">Samuel Lee 교수</p>
-                                    <p class="faculty-card__role">실천신학</p>
-                                    <p class="faculty-card__focus">온라인 목회와 커뮤니티 케어 모델을 개발하며 글로벌 사역 네트워크를 운영합니다.</p>
-                                </div>
-                            </article>
-                        </div>
-                    </aside>
                 </div>
             </div>
-                        <nav class="department-tabs" aria-label="신학대학원 메뉴">
-                            <div class="container" role="tablist">
-                                <a class="is-active" id="tab-overview" role="tab" aria-controls="overview" aria-selected="true" href="#overview">학과소개</a>
-                                <a id="tab-curriculum" role="tab" aria-controls="curriculum" aria-selected="false" tabindex="-1" href="#curriculum">교과과정</a>
-                                <a id="tab-career" role="tab" aria-controls="career" aria-selected="false" tabindex="-1" href="#career">진로 및 진출</a>
-                                <a id="tab-support" role="tab" aria-controls="support" aria-selected="false" tabindex="-1" href="#support">학생지원</a>
-                                <a id="tab-faculty" role="tab" aria-controls="faculty" aria-selected="false" tabindex="-1" href="#faculty">대표 교수진</a>
-                            </div>
-                        </nav>
+            <nav class="department-tabs" aria-label="신학대학원 메뉴">
+                <div class="container" role="tablist">
+                    <a class="is-active" id="tab-overview" role="tab" aria-controls="overview" aria-selected="true" href="#overview">학과소개</a>
+                    <a id="tab-curriculum" role="tab" aria-controls="curriculum" aria-selected="false" tabindex="-1" href="#curriculum">교과과정</a>
+                    <a id="tab-career" role="tab" aria-controls="career" aria-selected="false" tabindex="-1" href="#career">진로 및 진출</a>
+                    <a id="tab-support" role="tab" aria-controls="support" aria-selected="false" tabindex="-1" href="#support">학생지원</a>
+                    <a id="tab-faculty" role="tab" aria-controls="faculty" aria-selected="false" tabindex="-1" href="#faculty">대표 교수진</a>
+                </div>
+            </nav>
         </section>
 
         <section id="overview" class="department-section" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
@@ -197,6 +171,37 @@
                 </div>
             </div>
         </section>
+        <section id="faculty" class="department-section" role="tabpanel" aria-labelledby="tab-faculty" tabindex="0">
+            <div class="container">
+                <div class="department-hero__faculty">
+                    <h2>대표 교수진</h2>
+                    <p class="department-hero__faculty-intro">조직신학과 실천신학 분야의 석학들이 신학 연구와 목회 현장을 연결하는 심화 지도를 제공합니다.</p>
+                    <div class="department-hero__faculty-list">
+                        <article class="faculty-card">
+                            <figure class="faculty-card__photo">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZWFmMGZmIi8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiMzYTZmZjciLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjMWYyYTQ0IiBvcGFjaXR5PSIwLjE2Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiMzYTZmZjciIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="정하늘 교수의 프로필 사진" loading="lazy" />
+                            </figure>
+                            <div class="faculty-card__body">
+                                <p class="faculty-card__name">정하늘 교수</p>
+                                <p class="faculty-card__role">조직신학</p>
+                                <p class="faculty-card__focus">다학제 신학 담론과 목회 적용을 연결하는 연구를 이끌고 있습니다.</p>
+                            </div>
+                        </article>
+                        <article class="faculty-card">
+                            <figure class="faculty-card__photo">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIj4KICA8cmVjdCB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcng9IjMyIiBmaWxsPSIjZmZlY2U4Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI2MCIgcj0iMzYiIGZpbGw9IiNmZjdiNWEiLz4KICA8cGF0aCBkPSJNODAgOTZjLTMyIDAtNTggMjAtNTggNDZoMTE2YzAtMjYtMjYtNDYtNTgtNDZ6IiBmaWxsPSIjOGIzMjFmIiBvcGFjaXR5PSIwLjE4Ii8+CiAgPHBhdGggZD0iTTgwIDk2Yy0yNCAwLTQ0IDE0LTUxIDM0aDEwMmMtNy0yMC0yNy0zNC01MS0zNHoiIGZpbGw9IiNmZjdiNWEiIG9wYWNpdHk9IjAuMjgiLz4KPC9zdmc+Cg==" alt="Samuel Lee 교수의 프로필 사진" loading="lazy" />
+                            </figure>
+                            <div class="faculty-card__body">
+                                <p class="faculty-card__name">Samuel Lee 교수</p>
+                                <p class="faculty-card__role">실천신학</p>
+                                <p class="faculty-card__focus">온라인 목회와 커뮤니티 케어 모델을 개발하며 글로벌 사역 네트워크를 운영합니다.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <div data-include="assets/partials/footer.html"></div>
