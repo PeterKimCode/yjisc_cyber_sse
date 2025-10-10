@@ -338,6 +338,200 @@ const initialize = () => {
         }
     }
 
+    const initHighlightCardSliders = () => {
+        const highlightCards = document.querySelectorAll('.highlight-card');
+        if (highlightCards.length === 0) {
+            return;
+        }
+
+        const prefersReducedMotion =
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        highlightCards.forEach((card, cardIndex) => {
+            if (card.dataset.sliderInitialized === 'true') {
+                return;
+            }
+
+            card.dataset.sliderInitialized = 'true';
+            card.classList.add('highlight-card--slider');
+            card.removeAttribute('role');
+
+            const originalLabel = card.getAttribute('aria-label') || '하이라이트 이미지';
+            card.removeAttribute('aria-label');
+
+            const imageCount = 10;
+            const slider = document.createElement('div');
+            slider.className = 'highlight-slider';
+            slider.setAttribute('role', 'region');
+            slider.setAttribute('aria-label', `${originalLabel} 갤러리`);
+            slider.setAttribute('tabindex', '0');
+
+            const viewport = document.createElement('div');
+            viewport.className = 'highlight-slider__viewport';
+
+            const track = document.createElement('div');
+            track.className = 'highlight-slider__track';
+
+            const slides = [];
+            const dots = [];
+            const dotsWrapper = document.createElement('div');
+            dotsWrapper.className = 'highlight-slider__dots';
+
+            for (let index = 0; index < imageCount; index += 1) {
+                const slide = document.createElement('figure');
+                slide.className = 'highlight-slider__slide';
+
+                const image = document.createElement('img');
+                image.loading = 'lazy';
+                image.decoding = 'async';
+                image.src = `https://source.unsplash.com/random/1280x720?education,campus&sig=${
+                    cardIndex * imageCount + index + 1
+                }`;
+                image.alt = `${originalLabel} 이미지 ${index + 1}`;
+
+                slide.appendChild(image);
+                track.appendChild(slide);
+                slides.push(slide);
+
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'highlight-slider__dot';
+                dot.setAttribute('aria-label', `${index + 1}번째 이미지 보기`);
+                dot.dataset.index = String(index);
+                dotsWrapper.appendChild(dot);
+                dots.push(dot);
+            }
+
+            viewport.appendChild(track);
+            slider.appendChild(viewport);
+
+            const controls = document.createElement('div');
+            controls.className = 'highlight-slider__controls';
+
+            const createControl = (direction, label, symbol) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = `highlight-slider__control highlight-slider__control--${direction}`;
+                button.setAttribute('aria-label', label);
+                button.innerHTML = symbol;
+                return button;
+            };
+
+            const prevButton = createControl('prev', '이전 이미지', '&#10094;');
+            const nextButton = createControl('next', '다음 이미지', '&#10095;');
+
+            controls.appendChild(prevButton);
+            controls.appendChild(nextButton);
+
+            slider.appendChild(controls);
+            slider.appendChild(dotsWrapper);
+
+            card.innerHTML = '';
+            card.appendChild(slider);
+
+            let currentIndex = Math.floor(Math.random() * imageCount);
+            let autoplayId = null;
+            const autoplayDelay = 7000;
+
+            const setActive = (target) => {
+                const targetIndex = (target + slides.length) % slides.length;
+                currentIndex = targetIndex;
+
+                track.style.transform = `translateX(-${targetIndex * 100}%)`;
+
+                slides.forEach((slide, slideIndex) => {
+                    const isActive = slideIndex === targetIndex;
+                    slide.classList.toggle('is-active', isActive);
+                });
+
+                dots.forEach((dot, dotIndex) => {
+                    const isActive = dotIndex === targetIndex;
+                    dot.classList.toggle('is-active', isActive);
+                    dot.setAttribute('aria-pressed', String(isActive));
+                });
+            };
+
+            const goTo = (index) => {
+                setActive(index);
+            };
+
+            const goToNext = () => {
+                goTo(currentIndex + 1);
+            };
+
+            const goToPrev = () => {
+                goTo(currentIndex - 1);
+            };
+
+            const stopAutoplay = () => {
+                if (autoplayId) {
+                    window.clearInterval(autoplayId);
+                    autoplayId = null;
+                }
+            };
+
+            const startAutoplay = () => {
+                if (prefersReducedMotion || slides.length < 2) {
+                    return;
+                }
+
+                stopAutoplay();
+                autoplayId = window.setInterval(() => {
+                    goToNext();
+                }, autoplayDelay);
+            };
+
+            prevButton.addEventListener('click', () => {
+                goToPrev();
+                startAutoplay();
+            });
+
+            nextButton.addEventListener('click', () => {
+                goToNext();
+                startAutoplay();
+            });
+
+            dots.forEach((dot) => {
+                dot.addEventListener('click', () => {
+                    const targetIndex = Number(dot.dataset.index);
+                    if (Number.isNaN(targetIndex)) {
+                        return;
+                    }
+
+                    goTo(targetIndex);
+                    startAutoplay();
+                });
+            });
+
+            slider.addEventListener('pointerenter', stopAutoplay);
+            slider.addEventListener('pointerleave', startAutoplay);
+            slider.addEventListener('focusin', stopAutoplay);
+            slider.addEventListener('focusout', (event) => {
+                if (!slider.contains(event.relatedTarget)) {
+                    startAutoplay();
+                }
+            });
+
+            slider.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    goToPrev();
+                    startAutoplay();
+                } else if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+                    goToNext();
+                    startAutoplay();
+                }
+            });
+
+            setActive(currentIndex);
+            startAutoplay();
+        });
+    };
+
+    initHighlightCardSliders();
+
     const videoSliders = document.querySelectorAll('[data-video-slider]');
     if (videoSliders.length > 0) {
         const initVideoSlider = (slider) => {
