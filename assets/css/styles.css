@@ -364,13 +364,16 @@ img {
 
 .mega-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
+    align-items: start;
+    grid-auto-flow: row dense;
 }
 
 .mega-column {
     display: grid;
     gap: 1.5rem;
+    align-content: start;
 }
 
 .mega-section h3,
