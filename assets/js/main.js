@@ -20,22 +20,6 @@ const initialize = () => {
         }
     })();
 
-    const ensureHeaderCtaGroup = () => {
-        const headerContainer = document.querySelector('.site-header .container');
-        if (!headerContainer) {
-            return null;
-        }
-
-        let ctaGroup = headerContainer.querySelector('.cta-group');
-        if (!ctaGroup) {
-            ctaGroup = document.createElement('div');
-            ctaGroup.className = 'cta-group';
-            headerContainer.appendChild(ctaGroup);
-        }
-
-        return ctaGroup;
-    };
-
     const setupMegaMenuForTouch = () => {
         const nav = document.querySelector('.main-nav');
         if (!nav) {
@@ -152,30 +136,6 @@ const initialize = () => {
         }
 
         window.addEventListener('resize', updateTouchState);
-    };
-
-    const ensureTranslationButton = () => {
-        let translationButton = document.querySelector('[data-translate-toggle]');
-        if (translationButton) {
-            return translationButton;
-        }
-
-        const ctaGroup = ensureHeaderCtaGroup();
-        if (!ctaGroup) {
-            return null;
-        }
-
-        translationButton = document.createElement('button');
-        translationButton.type = 'button';
-        translationButton.className = 'btn ghost translation-toggle';
-        translationButton.setAttribute('data-translate-toggle', '');
-        translationButton.setAttribute('data-toggle-label-en', 'English');
-        translationButton.setAttribute('data-toggle-label-ko', '한국어');
-        translationButton.setAttribute('aria-pressed', 'false');
-        translationButton.textContent = 'English';
-        ctaGroup.appendChild(translationButton);
-
-        return translationButton;
     };
 
     const ensureScrollButton = () => {
@@ -666,33 +626,64 @@ const initialize = () => {
 
     initDepartmentTabs();
 
-    const translationButton = ensureTranslationButton();
-    if (translationButton) {
-        const defaultLabel =
-            translationButton.dataset.translateLabelEn ||
-            translationButton.dataset.toggleLabelEn ||
-            translationButton.textContent.trim() ||
-            'English';
-        const targetLang = translationButton.dataset.translateTarget || 'en';
-        const sourceLang = translationButton.dataset.translateSource || 'ko';
-        const ariaLabel =
-            translationButton.dataset.translateAriaLabel ||
-            '현재 페이지를 영어로 번역된 새 창에서 보기';
+    const initializeGoogleTranslate = () => {
+        const container = document.getElementById('google_translate_element');
+        if (!container) {
+            return;
+        }
 
-        translationButton.dataset.toggleLabelEn = defaultLabel;
-        translationButton.textContent = defaultLabel;
-        translationButton.setAttribute('aria-pressed', 'false');
-        translationButton.setAttribute('aria-label', ariaLabel);
+        const includedLanguages = 'en,zh-CN,zh-TW,ja,th,vi,tl,fr,de,id,ru,es';
 
-        translationButton.addEventListener('click', () => {
-            const translateUrl = new URL('https://papago.naver.net/website');
-            translateUrl.searchParams.set('locale', targetLang);
-            translateUrl.searchParams.set('source', sourceLang);
-            translateUrl.searchParams.set('target', targetLang);
-            translateUrl.searchParams.set('url', window.location.href);
-            window.open(translateUrl.toString(), '_blank', 'noopener');
-        });
-    }
+        const instantiateWidget = () => {
+            if (container.dataset.translateInitialized === 'true') {
+                return;
+            }
+
+            if (
+                !window.google ||
+                !window.google.translate ||
+                !window.google.translate.TranslateElement
+            ) {
+                return;
+            }
+
+            container.dataset.translateInitialized = 'true';
+
+            new window.google.translate.TranslateElement(
+                {
+                    pageLanguage: 'ko',
+                    includedLanguages,
+                    layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false,
+                },
+                'google_translate_element'
+            );
+        };
+
+        if (window.google && window.google.translate && window.google.translate.TranslateElement) {
+            instantiateWidget();
+            return;
+        }
+
+        window.googleTranslateElementInit = () => {
+            instantiateWidget();
+        };
+
+        const existingScript = document.querySelector(
+            'script[src^="https://translate.google.com/translate_a/element.js"]'
+        );
+        if (existingScript) {
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+    };
+
+    initializeGoogleTranslate();
 
     const darkModeToggle = ensureDarkModeToggle();
     if (darkModeToggle) {
