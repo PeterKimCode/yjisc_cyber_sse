@@ -2517,3 +2517,113 @@ body.theme-dark .picture-wrapper {
         overflow-y: auto;
     }
 }
+
+.educator-page .educator-overview {
+    padding: 4rem 0 2rem;
+}
+
+.educator-overview__title {
+    font-size: clamp(1.75rem, 1.4rem + 0.8vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+    color: var(--navy);
+}
+
+.educator-intro {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 1.25rem;
+    padding: 2.25rem;
+    box-shadow: 0 16px 32px rgba(31, 42, 68, 0.12);
+    display: grid;
+    gap: 1.5rem;
+}
+
+.educator-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.educator-card {
+    background: var(--white);
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 40px rgba(31, 42, 68, 0.12);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 140px) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.educator-card__media {
+    aspect-ratio: 3 / 4;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(58, 111, 247, 0.1), rgba(255, 226, 122, 0.25));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.educator-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.educator-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.educator-card__role {
+    font-weight: 600;
+    color: var(--primary-dark);
+    letter-spacing: 0.02em;
+}
+
+.educator-card__name {
+    font-size: 1.5rem;
+    margin: 0.1rem 0 0;
+}
+
+.educator-card__meta {
+    margin: 0;
+    display: grid;
+    gap: 1.2rem;
+}
+
+.educator-card__meta dt {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.educator-card__meta dd {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .educator-card {
+        grid-template-columns: minmax(0, 120px) minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .educator-intro {
+        padding: 1.75rem;
+    }
+
+    .educator-card {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .educator-card__media {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}
