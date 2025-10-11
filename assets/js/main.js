@@ -304,14 +304,61 @@ const initialize = () => {
 
             let autoplayId = null;
 
-            const updateHeight = () => {
-                const activeSlide = slides[currentIndex];
-                if (!activeSlide) {
+            const getSlideHeight = (slide) => {
+                if (!slide) {
+                    return 0;
+                }
+
+                const isActive = slide.classList.contains('is-active');
+                if (isActive) {
+                    return slide.offsetHeight;
+                }
+
+                const previous = {
+                    position: slide.style.position,
+                    opacity: slide.style.opacity,
+                    visibility: slide.style.visibility,
+                    pointerEvents: slide.style.pointerEvents,
+                    transition: slide.style.transition,
+                };
+
+                slide.style.transition = 'none';
+                slide.style.position = 'relative';
+                slide.style.opacity = '0';
+                slide.style.visibility = 'hidden';
+                slide.style.pointerEvents = 'none';
+
+                const height = slide.offsetHeight;
+
+                slide.style.position = previous.position;
+                slide.style.opacity = previous.opacity;
+                slide.style.visibility = previous.visibility;
+                slide.style.pointerEvents = previous.pointerEvents;
+                slide.style.transition = previous.transition;
+
+                return height;
+            };
+
+            const shouldUseAutoHeight = () => window.matchMedia('(max-width: 768px)').matches;
+
+            const measureTrackHeight = () => {
+                if (shouldUseAutoHeight()) {
+                    track.style.height = '';
                     return;
                 }
 
-                const newHeight = `${activeSlide.offsetHeight}px`;
-                track.style.height = newHeight;
+                const heights = slides.map((slide) => getSlideHeight(slide));
+                const maxHeight = Math.max(...heights);
+
+                if (!Number.isFinite(maxHeight) || maxHeight <= 0) {
+                    return;
+                }
+
+                track.style.height = `${maxHeight}px`;
+            };
+
+            const updateHeight = () => {
+                measureTrackHeight();
             };
 
             const setActive = (index) => {
@@ -414,9 +461,11 @@ const initialize = () => {
             startAutoplay();
             updateHeight();
 
-            window.addEventListener('resize', () => {
+            const handleResize = () => {
                 window.requestAnimationFrame(updateHeight);
-            });
+            };
+
+            window.addEventListener('resize', handleResize);
 
             window.addEventListener('load', updateHeight);
         }
