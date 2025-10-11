@@ -265,6 +265,11 @@ const initialize = () => {
         const isDark = theme === 'dark';
         document.body.classList.toggle('theme-dark', isDark);
         document.documentElement.dataset.theme = theme;
+        document.dispatchEvent(
+            new CustomEvent('themechange', {
+                detail: { theme },
+            })
+        );
     };
 
     const getStoredTheme = () => {
@@ -470,6 +475,12 @@ const initialize = () => {
             window.addEventListener('resize', handleResize);
 
             window.addEventListener('load', updateHeight);
+
+            const handleThemeChange = () => {
+                window.requestAnimationFrame(updateHeight);
+            };
+
+            document.addEventListener('themechange', handleThemeChange);
         }
     }
 
