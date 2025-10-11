@@ -2097,7 +2097,7 @@ body.theme-dark .picture-wrapper {
 .footer-top {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1.67rem 2.5rem;
     margin-bottom: 1.67rem;
 }
@@ -2105,6 +2105,7 @@ body.theme-dark .picture-wrapper {
 .footer-top > div {
     flex: 1 1 220px;
     min-width: 200px;
+    text-align: center;
 }
 
 .footer-links ul {
@@ -2122,17 +2123,20 @@ body.theme-dark .picture-wrapper {
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 1rem;
     font-size: 0.85rem;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .social {
     display: flex;
     gap: 1rem;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {
