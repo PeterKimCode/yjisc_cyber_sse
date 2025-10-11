@@ -199,9 +199,18 @@ img {
 .site-header .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 1.25rem 0;
     gap: 1.5rem;
+}
+
+.site-header .container > .main-nav {
+    flex: 1 1 auto;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
 }
 
 .logo {
@@ -273,9 +282,11 @@ img {
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: clamp(1rem, 1.6vw, 1.75rem);
     margin: 0;
     padding: 0;
+    justify-content: center;
+    width: 100%;
 }
 
 .main-nav li {
