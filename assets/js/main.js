@@ -344,7 +344,14 @@ const initialize = () => {
                 return height;
             };
 
+            const shouldUseAutoHeight = () => window.matchMedia('(max-width: 768px)').matches;
+
             const measureTrackHeight = () => {
+                if (shouldUseAutoHeight()) {
+                    track.style.height = '';
+                    return;
+                }
+
                 const heights = slides.map((slide) => getSlideHeight(slide));
                 const maxHeight = Math.max(...heights);
 
@@ -355,91 +362,8 @@ const initialize = () => {
                 track.style.height = `${maxHeight}px`;
             };
 
-            const applyTrackBackground = (slide) => {
-                if (!track || !slide) {
-                    return;
-                }
-
-                const styles = window.getComputedStyle(slide);
-                const customBackground = styles.getPropertyValue('--hero-background').trim();
-
-                if (customBackground) {
-                    track.style.backgroundImage = '';
-                    track.style.backgroundColor = '';
-                    track.style.backgroundPosition = '';
-                    track.style.backgroundSize = '';
-                    track.style.backgroundRepeat = '';
-                    track.style.backgroundOrigin = '';
-                    track.style.backgroundClip = '';
-                    track.style.background = customBackground;
-                    return;
-                }
-
-                const backgroundImage = styles.backgroundImage;
-                const backgroundColor = styles.backgroundColor;
-
-                track.style.backgroundColor = backgroundColor;
-                if (backgroundImage && backgroundImage !== 'none') {
-                    track.style.backgroundImage = backgroundImage;
-                    track.style.backgroundPosition = styles.backgroundPosition;
-                    track.style.backgroundSize = styles.backgroundSize;
-                    track.style.backgroundRepeat = styles.backgroundRepeat;
-                    track.style.backgroundOrigin = styles.backgroundOrigin;
-                    track.style.backgroundClip = styles.backgroundClip;
-                } else {
-                    track.style.backgroundImage = '';
-                    track.style.backgroundPosition = '';
-                    track.style.backgroundSize = '';
-                    track.style.backgroundRepeat = '';
-                    track.style.backgroundOrigin = '';
-                    track.style.backgroundClip = '';
-                }
-            };
-
             const updateHeight = () => {
                 measureTrackHeight();
-                applyTrackBackground(slides[currentIndex]);
-            };
-
-            const preloadAssets = () => {
-                const images = slider.querySelectorAll('img');
-                images.forEach((image) => {
-                    if (!(image instanceof HTMLImageElement)) {
-                        return;
-                    }
-
-                    if (image.complete) {
-                        return;
-                    }
-
-                    image.addEventListener('load', updateHeight, { once: true });
-                });
-
-                const videos = slider.querySelectorAll('video');
-                videos.forEach((video) => {
-                    if (!(video instanceof HTMLVideoElement)) {
-                        return;
-                    }
-
-                    if (video.readyState >= 2) {
-                        return;
-                    }
-
-                    video.addEventListener('loadeddata', updateHeight, { once: true });
-                });
-
-                const iframes = slider.querySelectorAll('iframe');
-                iframes.forEach((iframe) => {
-                    if (!(iframe instanceof HTMLIFrameElement)) {
-                        return;
-                    }
-
-                    if ('complete' in iframe && iframe.complete) {
-                        return;
-                    }
-
-                    iframe.addEventListener('load', updateHeight, { once: true });
-                });
             };
 
             const setActive = (index) => {
