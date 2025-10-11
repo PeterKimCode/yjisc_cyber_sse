@@ -1925,6 +1925,7 @@ body.theme-dark .dark-mode-toggle {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: stretch;
 }
 
 .news-card {
@@ -1934,6 +1935,8 @@ body.theme-dark .dark-mode-toggle {
     background: var(--white);
     display: grid;
     gap: 0.75rem;
+    align-content: start;
+    height: 100%;
 }
 
 .news-card .tag {
