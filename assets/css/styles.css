@@ -409,9 +409,11 @@ img {
 .mega-submenu {
     list-style: none;
     margin: 0.5rem 0 0;
-    padding: 0 0 0 1rem;
+    padding: 0;
     display: grid;
     gap: 0.35rem;
+    justify-items: center;
+    text-align: center;
 }
 
 .mega-submenu a {
