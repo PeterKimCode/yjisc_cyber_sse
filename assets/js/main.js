@@ -339,19 +339,41 @@ const initialize = () => {
     }
 
     const initHighlightCardSliders = () => {
-        const highlightCards = document.querySelectorAll('.highlight-card');
+        const highlightCards = document.querySelectorAll('[data-highlight-images]');
         if (highlightCards.length === 0) {
             return;
         }
 
-        const prefersReducedMotion =
-            typeof window.matchMedia === 'function' &&
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        highlightCards.forEach((card, cardIndex) => {
+        highlightCards.forEach((card) => {
             if (card.dataset.sliderInitialized === 'true') {
                 return;
             }
+
+            const imageNames = (card.dataset.highlightImages || '')
+                .split(/[,\n]/)
+                .map((name) => name.trim())
+                .filter(Boolean);
+
+            // Allow authors to pass a comma or newline separated list of file names. When a bare file
+            // name is provided we assume the asset lives under `assets/picture/` so that images can be
+            // managed alongside the rest of the site assets without additional configuration.
+
+            if (imageNames.length === 0) {
+                return;
+            }
+
+            const resolveImagePath = (fileName) => {
+                if (
+                    /^(?:[a-z]+:)?\/\//i.test(fileName) ||
+                    fileName.startsWith('assets/') ||
+                    fileName.startsWith('./') ||
+                    fileName.startsWith('../')
+                ) {
+                    return fileName;
+                }
+
+                return `assets/picture/${fileName}`;
+            };
 
             card.dataset.sliderInitialized = 'true';
             card.classList.add('highlight-card--slider');
@@ -360,7 +382,6 @@ const initialize = () => {
             const originalLabel = card.getAttribute('aria-label') || '하이라이트 이미지';
             card.removeAttribute('aria-label');
 
-            const imageCount = 10;
             const slider = document.createElement('div');
             slider.className = 'highlight-slider';
             slider.setAttribute('role', 'region');
@@ -378,61 +399,66 @@ const initialize = () => {
             const dotsWrapper = document.createElement('div');
             dotsWrapper.className = 'highlight-slider__dots';
 
-            for (let index = 0; index < imageCount; index += 1) {
+            imageNames.forEach((fileName, index) => {
                 const slide = document.createElement('figure');
                 slide.className = 'highlight-slider__slide';
 
                 const image = document.createElement('img');
                 image.loading = 'lazy';
                 image.decoding = 'async';
-                image.src = `https://source.unsplash.com/random/1280x720?education,campus&sig=${
-                    cardIndex * imageCount + index + 1
-                }`;
+                image.src = resolveImagePath(fileName);
                 image.alt = `${originalLabel} 이미지 ${index + 1}`;
 
                 slide.appendChild(image);
                 track.appendChild(slide);
                 slides.push(slide);
 
-                const dot = document.createElement('button');
-                dot.type = 'button';
-                dot.className = 'highlight-slider__dot';
-                dot.setAttribute('aria-label', `${index + 1}번째 이미지 보기`);
-                dot.dataset.index = String(index);
-                dotsWrapper.appendChild(dot);
-                dots.push(dot);
-            }
+                if (imageNames.length > 1) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'highlight-slider__dot';
+                    dot.setAttribute('aria-label', `${index + 1}번째 이미지 보기`);
+                    dot.dataset.index = String(index);
+                    dotsWrapper.appendChild(dot);
+                    dots.push(dot);
+                }
+            });
 
             viewport.appendChild(track);
             slider.appendChild(viewport);
 
-            const controls = document.createElement('div');
-            controls.className = 'highlight-slider__controls';
+            let prevButton = null;
+            let nextButton = null;
 
-            const createControl = (direction, label, symbol) => {
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = `highlight-slider__control highlight-slider__control--${direction}`;
-                button.setAttribute('aria-label', label);
-                button.innerHTML = symbol;
-                return button;
-            };
+            if (slides.length > 1) {
+                const controls = document.createElement('div');
+                controls.className = 'highlight-slider__controls';
 
-            const prevButton = createControl('prev', '이전 이미지', '&#10094;');
-            const nextButton = createControl('next', '다음 이미지', '&#10095;');
+                const createControl = (direction, label, symbol) => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = `highlight-slider__control highlight-slider__control--${direction}`;
+                    button.setAttribute('aria-label', label);
+                    button.innerHTML = symbol;
+                    return button;
+                };
 
-            controls.appendChild(prevButton);
-            controls.appendChild(nextButton);
+                prevButton = createControl('prev', '이전 이미지', '&#10094;');
+                nextButton = createControl('next', '다음 이미지', '&#10095;');
 
-            slider.appendChild(controls);
-            slider.appendChild(dotsWrapper);
+                controls.appendChild(prevButton);
+                controls.appendChild(nextButton);
+                slider.appendChild(controls);
+
+                if (dots.length > 0) {
+                    slider.appendChild(dotsWrapper);
+                }
+            }
 
             card.innerHTML = '';
             card.appendChild(slider);
 
-            let currentIndex = Math.floor(Math.random() * imageCount);
-            let autoplayId = null;
-            const autoplayDelay = 7000;
+            let currentIndex = 0;
 
             const setActive = (target) => {
                 const targetIndex = (target + slides.length) % slides.length;
@@ -453,80 +479,43 @@ const initialize = () => {
             };
 
             const goTo = (index) => {
-                setActive(index);
-            };
-
-            const goToNext = () => {
-                goTo(currentIndex + 1);
-            };
-
-            const goToPrev = () => {
-                goTo(currentIndex - 1);
-            };
-
-            const stopAutoplay = () => {
-                if (autoplayId) {
-                    window.clearInterval(autoplayId);
-                    autoplayId = null;
-                }
-            };
-
-            const startAutoplay = () => {
-                if (prefersReducedMotion || slides.length < 2) {
+                if (slides.length === 0) {
                     return;
                 }
 
-                stopAutoplay();
-                autoplayId = window.setInterval(() => {
-                    goToNext();
-                }, autoplayDelay);
+                setActive(index);
             };
 
-            prevButton.addEventListener('click', () => {
-                goToPrev();
-                startAutoplay();
-            });
+            if (prevButton && nextButton) {
+                prevButton.addEventListener('click', () => {
+                    goTo(currentIndex - 1);
+                });
 
-            nextButton.addEventListener('click', () => {
-                goToNext();
-                startAutoplay();
-            });
+                nextButton.addEventListener('click', () => {
+                    goTo(currentIndex + 1);
+                });
+            }
 
             dots.forEach((dot) => {
                 dot.addEventListener('click', () => {
                     const targetIndex = Number(dot.dataset.index);
-                    if (Number.isNaN(targetIndex)) {
-                        return;
+                    if (!Number.isNaN(targetIndex)) {
+                        goTo(targetIndex);
                     }
-
-                    goTo(targetIndex);
-                    startAutoplay();
                 });
-            });
-
-            slider.addEventListener('pointerenter', stopAutoplay);
-            slider.addEventListener('pointerleave', startAutoplay);
-            slider.addEventListener('focusin', stopAutoplay);
-            slider.addEventListener('focusout', (event) => {
-                if (!slider.contains(event.relatedTarget)) {
-                    startAutoplay();
-                }
             });
 
             slider.addEventListener('keydown', (event) => {
                 if (event.key === 'ArrowLeft') {
                     event.preventDefault();
-                    goToPrev();
-                    startAutoplay();
+                    goTo(currentIndex - 1);
                 } else if (event.key === 'ArrowRight') {
                     event.preventDefault();
-                    goToNext();
-                    startAutoplay();
+                    goTo(currentIndex + 1);
                 }
             });
 
-            setActive(currentIndex);
-            startAutoplay();
+            goTo(0);
         });
     };
 
