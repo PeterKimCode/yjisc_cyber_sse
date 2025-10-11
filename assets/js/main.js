@@ -265,6 +265,11 @@ const initialize = () => {
         const isDark = theme === 'dark';
         document.body.classList.toggle('theme-dark', isDark);
         document.documentElement.dataset.theme = theme;
+        document.dispatchEvent(
+            new CustomEvent('themechange', {
+                detail: { theme },
+            })
+        );
     };
 
     const getStoredTheme = () => {
@@ -304,14 +309,137 @@ const initialize = () => {
 
             let autoplayId = null;
 
-            const updateHeight = () => {
-                const activeSlide = slides[currentIndex];
-                if (!activeSlide) {
+            const getSlideHeight = (slide) => {
+                if (!slide) {
+                    return 0;
+                }
+
+                const isActive = slide.classList.contains('is-active');
+                if (isActive) {
+                    return slide.offsetHeight;
+                }
+
+                const previous = {
+                    position: slide.style.position,
+                    opacity: slide.style.opacity,
+                    visibility: slide.style.visibility,
+                    pointerEvents: slide.style.pointerEvents,
+                    transition: slide.style.transition,
+                };
+
+                slide.style.transition = 'none';
+                slide.style.position = 'relative';
+                slide.style.opacity = '0';
+                slide.style.visibility = 'hidden';
+                slide.style.pointerEvents = 'none';
+
+                const height = slide.offsetHeight;
+
+                slide.style.position = previous.position;
+                slide.style.opacity = previous.opacity;
+                slide.style.visibility = previous.visibility;
+                slide.style.pointerEvents = previous.pointerEvents;
+                slide.style.transition = previous.transition;
+
+                return height;
+            };
+
+            const measureTrackHeight = () => {
+                const heights = slides.map((slide) => getSlideHeight(slide));
+                const maxHeight = Math.max(...heights);
+
+                if (!Number.isFinite(maxHeight) || maxHeight <= 0) {
                     return;
                 }
 
-                const newHeight = `${activeSlide.offsetHeight}px`;
-                track.style.height = newHeight;
+                track.style.height = `${maxHeight}px`;
+            };
+
+            const applyTrackBackground = (slide) => {
+                if (!track || !slide) {
+                    return;
+                }
+
+                const styles = window.getComputedStyle(slide);
+                const customBackground = styles.getPropertyValue('--hero-background').trim();
+
+                if (customBackground) {
+                    track.style.backgroundImage = '';
+                    track.style.backgroundColor = '';
+                    track.style.backgroundPosition = '';
+                    track.style.backgroundSize = '';
+                    track.style.backgroundRepeat = '';
+                    track.style.backgroundOrigin = '';
+                    track.style.backgroundClip = '';
+                    track.style.background = customBackground;
+                    return;
+                }
+
+                const backgroundImage = styles.backgroundImage;
+                const backgroundColor = styles.backgroundColor;
+
+                track.style.backgroundColor = backgroundColor;
+                if (backgroundImage && backgroundImage !== 'none') {
+                    track.style.backgroundImage = backgroundImage;
+                    track.style.backgroundPosition = styles.backgroundPosition;
+                    track.style.backgroundSize = styles.backgroundSize;
+                    track.style.backgroundRepeat = styles.backgroundRepeat;
+                    track.style.backgroundOrigin = styles.backgroundOrigin;
+                    track.style.backgroundClip = styles.backgroundClip;
+                } else {
+                    track.style.backgroundImage = '';
+                    track.style.backgroundPosition = '';
+                    track.style.backgroundSize = '';
+                    track.style.backgroundRepeat = '';
+                    track.style.backgroundOrigin = '';
+                    track.style.backgroundClip = '';
+                }
+            };
+
+            const updateHeight = () => {
+                measureTrackHeight();
+                applyTrackBackground(slides[currentIndex]);
+            };
+
+            const preloadAssets = () => {
+                const images = slider.querySelectorAll('img');
+                images.forEach((image) => {
+                    if (!(image instanceof HTMLImageElement)) {
+                        return;
+                    }
+
+                    if (image.complete) {
+                        return;
+                    }
+
+                    image.addEventListener('load', updateHeight, { once: true });
+                });
+
+                const videos = slider.querySelectorAll('video');
+                videos.forEach((video) => {
+                    if (!(video instanceof HTMLVideoElement)) {
+                        return;
+                    }
+
+                    if (video.readyState >= 2) {
+                        return;
+                    }
+
+                    video.addEventListener('loadeddata', updateHeight, { once: true });
+                });
+
+                const iframes = slider.querySelectorAll('iframe');
+                iframes.forEach((iframe) => {
+                    if (!(iframe instanceof HTMLIFrameElement)) {
+                        return;
+                    }
+
+                    if ('complete' in iframe && iframe.complete) {
+                        return;
+                    }
+
+                    iframe.addEventListener('load', updateHeight, { once: true });
+                });
             };
 
             const setActive = (index) => {
@@ -410,15 +538,25 @@ const initialize = () => {
                 }
             });
 
+            preloadAssets();
+
             setActive(currentIndex);
             startAutoplay();
             updateHeight();
 
-            window.addEventListener('resize', () => {
+            const handleResize = () => {
                 window.requestAnimationFrame(updateHeight);
-            });
+            };
+
+            window.addEventListener('resize', handleResize);
 
             window.addEventListener('load', updateHeight);
+
+            const handleThemeChange = () => {
+                window.requestAnimationFrame(updateHeight);
+            };
+
+            document.addEventListener('themechange', handleThemeChange);
         }
     }
 
