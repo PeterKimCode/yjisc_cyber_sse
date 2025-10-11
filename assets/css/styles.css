@@ -200,8 +200,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 1.25rem 0;
-    gap: 1.5rem;
+    padding: 1.1rem 0;
+    gap: 1rem;
 }
 
 .site-header .container > .main-nav {
@@ -282,7 +282,7 @@ img {
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: clamp(0.75rem, 1.4vw, 1.5rem);
+    gap: clamp(0.5rem, 0.9vw, 1.1rem);
     margin: 0;
     padding: 0;
     justify-content: center;
