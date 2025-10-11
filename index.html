@@ -249,12 +249,92 @@
                     </ul>
                 </div>
                 <div>
-                    <div
-                        class="highlight-card"
-                        role="img"
-                        aria-label="GTCC 캠퍼스 이미지"
-                        data-highlight-images="highlight-card-img1.jpg, 1729429936777.jpg"
-                    ></div>
+                    <div class="campus-picture">
+                        <h4>캠퍼스 사진 갤러리</h4>
+                        <p class="campus-picture__description">
+                            실제 학습 공간과 캠퍼스 분위기를 사진으로 만나보세요.
+                        </p>
+                        <div
+                            class="video-slider"
+                            role="region"
+                            aria-roledescription="carousel"
+                            aria-label="GTCC 사이버대학 캠퍼스 사진"
+                            data-video-slider
+                            data-video-interval="8000"
+                            tabindex="0"
+                        >
+                            <div class="video-slider__viewport">
+                                <div class="video-slider__track" data-video-track>
+                                    <figure
+                                        id="campus-picture-slide-1"
+                                        class="video-slider__slide is-active"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="1 / 2"
+                                        aria-hidden="false"
+                                    >
+                                        <div class="picture-wrapper">
+                                            <img
+                                                src="assets/picture/highlight-card-img1.jpg"
+                                                alt="GTCC 캠퍼스 전경"
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                        </div>
+                                    </figure>
+                                    <figure
+                                        id="campus-picture-slide-2"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="2 / 2"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="picture-wrapper">
+                                            <img
+                                                src="assets/picture/1729429936777.jpg"
+                                                alt="GTCC 학습 공간에서 협업 중인 학생들"
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="video-slider__controls">
+                                <button class="video-slider__nav video-slider__nav--prev" type="button" data-video-prev aria-label="이전 사진">
+                                    <span aria-hidden="true">‹</span>
+                                    <span class="sr-only">이전 사진 보기</span>
+                                </button>
+                                <div class="video-slider__dots" role="tablist">
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot is-active"
+                                        role="tab"
+                                        aria-selected="true"
+                                        aria-controls="campus-picture-slide-1"
+                                        aria-label="1번 사진"
+                                        data-video-dot="0"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-picture-slide-2"
+                                        aria-label="2번 사진"
+                                        data-video-dot="1"
+                                    ></button>
+                                </div>
+                                <button class="video-slider__nav video-slider__nav--next" type="button" data-video-next aria-label="다음 사진">
+                                    <span aria-hidden="true">›</span>
+                                    <span class="sr-only">다음 사진 보기</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
