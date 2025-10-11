@@ -770,6 +770,42 @@ const initialize = () => {
 
     initializeGoogleTranslate();
 
+    const setupConsultationBooking = () => {
+        const form = document.getElementById('consultation-booking-form');
+        if (!form) {
+            return;
+        }
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            const name = String(formData.get('name') || '').trim();
+            const phone = String(formData.get('phone') || '').trim();
+            const date = String(formData.get('date') || '').trim();
+
+            const details = [];
+            if (name) {
+                details.push(`이름: ${name}`);
+            }
+            if (phone) {
+                details.push(`연락처: ${phone}`);
+            }
+            if (date) {
+                details.push(`상담 희망일: ${date}`);
+            }
+
+            const subjectSuffix = name ? ` - ${name}` : '';
+            const subject = encodeURIComponent(`상담 예약 신청${subjectSuffix}`);
+            const body = encodeURIComponent(details.join('\n'));
+
+            const mailtoUrl = `mailto:gtcccybercollege@gmial.com?subject=${subject}&body=${body}`;
+            window.location.href = mailtoUrl;
+        });
+    };
+
+    setupConsultationBooking();
+
     const darkModeToggle = ensureDarkModeToggle();
     if (darkModeToggle) {
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
