@@ -376,18 +376,22 @@ img {
 }
 
 .mega-columns {
-    display: flex;
-    flex-wrap: wrap;
+    --mega-min-column: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--mega-min-column), 1fr));
     gap: 1.75rem 2.25rem;
-    align-items: flex-start;
+    align-items: start;
+}
+
+.mega-columns[data-columns='1'] {
+    grid-template-columns: minmax(0, 1fr);
 }
 
 .mega-column {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    min-width: 200px;
-    flex: 0 1 auto;
 }
 
 .mega-section h3,

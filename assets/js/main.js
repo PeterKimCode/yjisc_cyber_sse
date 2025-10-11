@@ -20,6 +20,89 @@ const initialize = () => {
         }
     })();
 
+    const pruneMegaMenuColumns = () => {
+        const nav = document.querySelector('.main-nav');
+        if (!nav) {
+            return;
+        }
+
+        const columnGroups = Array.from(nav.querySelectorAll('.mega-columns'));
+        columnGroups.forEach((group) => {
+            const columns = Array.from(group.querySelectorAll('.mega-column'));
+            columns.forEach((column) => {
+                if (!(column instanceof HTMLElement)) {
+                    return;
+                }
+
+                const listItems = Array.from(column.querySelectorAll('li'));
+                listItems.forEach((item) => {
+                    if (!(item instanceof HTMLElement)) {
+                        return;
+                    }
+
+                    const link = item.querySelector('a[href]');
+                    if (link instanceof HTMLElement) {
+                        const linkText = link.textContent ? link.textContent.trim() : '';
+                        const isHidden =
+                            link.hasAttribute('hidden') || link.getAttribute('aria-hidden') === 'true';
+
+                        if (isHidden || linkText.length === 0) {
+                            link.remove();
+                        }
+                    }
+
+                    const itemText = item.textContent ? item.textContent.trim() : '';
+                    const hasInteractiveContent = Boolean(item.querySelector('a[href], button'));
+                    if (!hasInteractiveContent && itemText.length === 0) {
+                        item.remove();
+                    }
+                });
+
+                const sections = Array.from(column.querySelectorAll('.mega-section'));
+                sections.forEach((section) => {
+                    if (!(section instanceof HTMLElement)) {
+                        return;
+                    }
+
+                    const sectionHasContent = Boolean(
+                        section.querySelector(
+                            'a[href], .mega-promo, li, p:not(:empty), strong:not(:empty)'
+                        )
+                    );
+
+                    const sectionText = section.textContent ? section.textContent.trim() : '';
+                    if (!sectionHasContent && sectionText.length === 0) {
+                        section.remove();
+                    }
+                });
+
+                const hasMeaningfulContent = Boolean(
+                    column.querySelector(
+                        'a[href], .mega-promo, li, p:not(:empty), strong:not(:empty)'
+                    )
+                );
+
+                const textContent = column.textContent ? column.textContent.trim() : '';
+                if (!hasMeaningfulContent && textContent.length === 0) {
+                    column.remove();
+                }
+            });
+
+            const remainingColumns = group.querySelectorAll('.mega-column').length;
+            if (remainingColumns === 0) {
+                const menu = group.closest('.mega-menu');
+                if (menu) {
+                    menu.remove();
+                } else {
+                    group.remove();
+                }
+                return;
+            }
+
+            group.dataset.columns = String(remainingColumns);
+        });
+    };
+
     const setupMegaMenuForTouch = () => {
         const nav = document.querySelector('.main-nav');
         if (!nav) {
@@ -200,6 +283,7 @@ const initialize = () => {
         window.localStorage.setItem('preferred-theme', theme);
     };
 
+    pruneMegaMenuColumns();
     setupMegaMenuForTouch();
 
     const slider = document.querySelector('[data-hero-slider]');
