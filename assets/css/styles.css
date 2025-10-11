@@ -282,11 +282,11 @@ img {
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: clamp(1rem, 1.6vw, 1.75rem);
+    gap: clamp(0.75rem, 1.4vw, 1.5rem);
     margin: 0;
     padding: 0;
     justify-content: center;
-    width: 100%;
+    width: auto;
 }
 
 .main-nav li {
@@ -351,10 +351,12 @@ img {
     left: 50%;
     top: 100%;
     transform: translate(-50%, 10px);
-    width: min(920px, 90vw);
+    width: auto;
+    min-width: clamp(22rem, 48vw, 46rem);
+    max-width: min(56rem, 92vw);
     background: #0f1f4c;
     color: var(--white);
-    padding: 2rem 2.5rem;
+    padding: 1.75rem 2rem;
     border-radius: 1.25rem;
     box-shadow: 0 28px 48px rgba(15, 31, 76, 0.32);
     opacity: 0;
@@ -374,17 +376,18 @@ img {
 }
 
 .mega-columns {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    align-items: start;
-    grid-auto-flow: row dense;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem 2.25rem;
+    align-items: flex-start;
 }
 
 .mega-column {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
-    align-content: start;
+    min-width: 200px;
+    flex: 0 1 auto;
 }
 
 .mega-section h3,
