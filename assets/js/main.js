@@ -457,6 +457,8 @@ const initialize = () => {
                 }
             });
 
+            preloadAssets();
+
             setActive(currentIndex);
             startAutoplay();
             updateHeight();
