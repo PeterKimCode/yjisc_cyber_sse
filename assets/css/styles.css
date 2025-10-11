@@ -2100,6 +2100,12 @@ body.theme-dark .picture-wrapper {
     padding: 2rem 0 1.33rem;
 }
 
+.site-footer .logo {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
 .footer-top {
     display: flex;
     flex-wrap: wrap;
