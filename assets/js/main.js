@@ -348,43 +348,19 @@ const initialize = () => {
             typeof window.matchMedia === 'function' &&
             window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        highlightCards.forEach((card) => {
+        highlightCards.forEach((card, cardIndex) => {
             if (card.dataset.sliderInitialized === 'true') {
                 return;
             }
 
             card.dataset.sliderInitialized = 'true';
-            const originalLabel = card.getAttribute('aria-label') || '하이라이트 이미지';
-
-            const defaultImageCount = 10;
-            const imageCount = (() => {
-                const configuredCount = Number.parseInt(card.dataset.imageCount || '', 10);
-                return Number.isNaN(configuredCount) ? defaultImageCount : configuredCount;
-            })();
-
-            if (imageCount <= 0) {
-                return;
-            }
-
             card.classList.add('highlight-card--slider');
             card.removeAttribute('role');
+
+            const originalLabel = card.getAttribute('aria-label') || '하이라이트 이미지';
             card.removeAttribute('aria-label');
 
-            const imageDirectory = card.dataset.imagePath || 'assets/picture';
-            const imagePrefix = card.dataset.imagePrefix || 'highlight-card-img';
-            const imagePadLength = (() => {
-                const padValue = Number.parseInt(card.dataset.imagePad || '', 10);
-                if (Number.isNaN(padValue) || padValue < 0) {
-                    return 0;
-                }
-
-                return padValue;
-            })();
-            const imageExtensionList = (card.dataset.imageExtension || 'jpg')
-                .split(',')
-                .map((value) => value.trim())
-                .filter(Boolean);
-            const effectiveExtensions = imageExtensionList.length > 0 ? imageExtensionList : ['jpg'];
+            const imageCount = 10;
             const slider = document.createElement('div');
             slider.className = 'highlight-slider';
             slider.setAttribute('role', 'region');
@@ -409,12 +385,9 @@ const initialize = () => {
                 const image = document.createElement('img');
                 image.loading = 'lazy';
                 image.decoding = 'async';
-                const imageNumber = index + 1;
-                const resolvedExtension = effectiveExtensions[index % effectiveExtensions.length];
-                const paddedNumber = imagePadLength
-                    ? String(imageNumber).padStart(imagePadLength, '0')
-                    : String(imageNumber);
-                image.src = `${imageDirectory}/${imagePrefix}${paddedNumber}.${resolvedExtension}`;
+                image.src = `https://source.unsplash.com/random/1280x720?education,campus&sig=${
+                    cardIndex * imageCount + index + 1
+                }`;
                 image.alt = `${originalLabel} 이미지 ${index + 1}`;
 
                 slide.appendChild(image);
@@ -457,7 +430,7 @@ const initialize = () => {
             card.innerHTML = '';
             card.appendChild(slider);
 
-            let currentIndex = 0;
+            let currentIndex = Math.floor(Math.random() * imageCount);
             let autoplayId = null;
             const autoplayDelay = 7000;
 
