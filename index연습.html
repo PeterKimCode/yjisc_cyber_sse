@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GTCC</title>
+    <link rel="icon" type="image/png" href="assets/icons/gtcc.png" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div data-include="assets/partials/header.html"></div>
+
+    <main>
+        <section
+            class="hero-slider"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="주요 안내 배너"
+            data-hero-slider
+            data-hero-interval="8000"
+            tabindex="0"
+        >
+            <div class="hero-slider__track" data-hero-track>
+                <article
+                    id="hero-slide-1"
+                    class="hero hero-slide is-active"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="1 / 5"
+                    aria-hidden="false"
+                    style="--hero-background:linear-gradient(135deg, #0f172a 0%, #1d4ed8 55%, #6366f1 100%); --badge-background: rgba(255, 255, 255, 0.18); --badge-color: #e0e7ff; --hero-text-color: #ffffff; --hero-body-color: rgba(226, 232, 240, 0.86); --hero-ghost-color: #e0e7ff; --hero-ghost-border: rgba(226, 232, 240, 0.5); --hero-ghost-hover: rgba(226, 232, 240, 0.2); --floating-card-bg: rgba(15, 23, 42, 0.78); --floating-card-color: #f8fafc; --floating-card-link: #c7d2fe;"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">Smart Learning Platform</span>
+                            <h1>시간과 장소의 제약 없이 성장하는 미래형 대학 GTCC</h1>
+                            <p>
+                                GTCC 사이버 캠퍼스는 일과 학습의 균형을 돕는 유연한 온라인 교육 환경을 제공합니다.
+                                언제 어디서나 수준 높은 강의를 수강하고, 글로벌 인재로 도약하세요.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="#programs">전공 살펴보기</a>
+                                <a class="btn ghost" href="#tour">캠퍼스 둘러보기</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>2026 신·편입학 모집</strong>
+                                <p>온라인 원서 접수 마감: 25.12.31</p>
+                                <a href="#apply">지원 일정 확인</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    id="hero-slide-2"
+                    class="hero hero-slide"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="2 / 5"
+                    aria-hidden="true"
+                    style="--hero-background: linear-gradient(140deg, #0f766e 0%, #14b8a6 45%, #38bdf8 100%); --badge-background: rgba(255, 255, 255, 0.2); --badge-color: #ecfeff; --hero-text-color: #f0fdfa; --hero-body-color: rgba(240, 253, 250, 0.85); --hero-ghost-color: #ecfeff; --hero-ghost-border: rgba(240, 253, 250, 0.55); --hero-ghost-hover: rgba(236, 254, 255, 0.2); --floating-card-bg: rgba(15, 118, 110, 0.75); --floating-card-color: #faffff; --floating-card-link: #bbf7d0;"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">AI · Data Science</span>
+                            <h1>산업 현장이 주목하는 데이터 사이언스 교육</h1>
+                            <p>
+                                캡스톤 프로젝트와 기업 협업 과정을 통해 실무에서 바로 활용 가능한 AI 역량을 키웁니다.
+                                최신 트렌드를 반영한 온라인 커리큘럼을 경험해 보세요.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="programs.html#ai">AI 학부 살펴보기</a>
+                                <a class="btn ghost" href="industry-collaboration.html">산업 협력 사례</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>데이터 분석 부트캠프</strong>
+                                <p>기업 멘토와 함께하는 6주 집중 과정</p>
+                                <a href="programs.html#ai">과정 자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    id="hero-slide-3"
+                    class="hero hero-slide"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="3 / 5"
+                    aria-hidden="true"
+                    style="--hero-background: linear-gradient(130deg, #8b5cf6 0%, #ec4899 55%, #fbbf24 100%); --badge-background: rgba(255, 255, 255, 0.18); --badge-color: #fdf2f8; --hero-text-color: #ffffff; --hero-body-color: rgba(255, 241, 242, 0.88); --hero-ghost-color: #fdf2f8; --hero-ghost-border: rgba(253, 242, 248, 0.55); --hero-ghost-hover: rgba(253, 242, 248, 0.22); --floating-card-bg: rgba(76, 29, 149, 0.72); --floating-card-color: #fdf4ff; --floating-card-link: #fce7f3;"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">Global Collaboration</span>
+                            <h1>해외 대학과 함께하는 글로벌 융합 프로그램</h1>
+                            <p>
+                                GTCC 대학은 세계 각국의 파트너 대학과 온라인 공동 수업을 운영하며, 상호 학점 인정 등 글로벌 프로젝트를 통해 실전 협업 능력을 강화합니다.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="#global">국제교류 바로가기</a>
+                                <a class="btn ghost" href="partnerships.html">협력 기관 보기</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>글로벌 인턴십</strong>
+                                <p>해외 파트너 기업과 공동 프로젝트 진행</p>
+                                <a href="#global">지원 안내 확인</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    id="hero-slide-4"
+                    class="hero hero-slide"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="4 / 5"
+                    aria-hidden="true"
+                    style="--hero-background: linear-gradient(140deg, #0f4c75 0%, #3282b8 50%, #bbe1fa 100%); --badge-background: rgba(255, 255, 255, 0.22); --badge-color: #e3f2fd; --hero-text-color: #f0f9ff; --hero-body-color: rgba(236, 248, 255, 0.85); --hero-ghost-color: #e3f2fd; --hero-ghost-border: rgba(227, 242, 253, 0.55); --hero-ghost-hover: rgba(227, 242, 253, 0.2); --floating-card-bg: rgba(15, 76, 117, 0.72); --floating-card-color: #f0f9ff; --floating-card-link: #cfe8ff;"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">Scholarship &amp; Support</span>
+                            <h1>누구나 학업에 집중할 수 있도록 탄탄한 지원</h1>
+                            <p>
+                                성적우수·재직자·신입생 장학 등 상황에 맞춘 다양한 장학 혜택과 맞춤형 학습 코칭을 제공합니다.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="#support">장학 제도 확인</a>
+                                <a class="btn ghost" href="support.html#coaching">학습 코칭 안내</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>2026 장학 프로그램</strong>
+                                <p>신입생 전원 온라인 학습 지원 키트 제공</p>
+                                <a href="#support">혜택 자세히 보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article
+                    id="hero-slide-5"
+                    class="hero hero-slide"
+                    data-hero-slide
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="5 / 5"
+                    aria-hidden="true"
+                    style="--hero-background: linear-gradient(135deg, #f97316 0%, #fb7185 50%, #c084fc 100%); --badge-background: rgba(255, 255, 255, 0.2); --badge-color: #fff7ed; --hero-text-color: #ffffff; --hero-body-color: rgba(255, 247, 237, 0.88); --hero-ghost-color: #fff7ed; --hero-ghost-border: rgba(255, 247, 237, 0.55); --hero-ghost-hover: rgba(255, 247, 237, 0.22); --floating-card-bg: rgba(124, 58, 237, 0.7); --floating-card-color: #fdf4ff; --floating-card-link: #fde68a;"
+                >
+                    <div class="container">
+                        <div class="hero-text">
+                            <span class="badge">Student Life</span>
+                            <h1>온·오프라인이 연결된 커뮤니티 기반 학습</h1>
+                            <p>
+                                지역 스터디 모임과 온라인 동아리, 멘토링 플랫폼을 통해 서로 배우고 성장하는 학습 공동체를 만들어갑니다.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn primary" href="campus-life.html">캠퍼스 라이프 살펴보기</a>
+                                <a class="btn ghost" href="news.html#events">주요 행사 일정</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual" aria-hidden="true">
+                            <div class="floating-card">
+                                <strong>GTCC 커뮤니티 허브</strong>
+                                <p>멘토링 · 스터디 그룹 · 진로 코칭 제공</p>
+                                <a href="support.html">서비스 알아보기</a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="hero-slider__controls">
+                <button type="button" class="hero-slider__control" data-hero-prev aria-label="이전 배너">
+                    <span aria-hidden="true">&#10094;</span>
+                </button>
+                <button type="button" class="hero-slider__control" data-hero-next aria-label="다음 배너">
+                    <span aria-hidden="true">&#10095;</span>
+                </button>
+            </div>
+            <div class="hero-slider__dots" role="tablist">
+                <button type="button" role="tab" class="hero-slider__dot is-active" data-hero-dot="0" aria-controls="hero-slide-1" aria-selected="true" aria-label="1번 배너"></button>
+                <button type="button" role="tab" class="hero-slider__dot" data-hero-dot="1" aria-controls="hero-slide-2" aria-selected="false" aria-label="2번 배너"></button>
+                <button type="button" role="tab" class="hero-slider__dot" data-hero-dot="2" aria-controls="hero-slide-3" aria-selected="false" aria-label="3번 배너"></button>
+                <button type="button" role="tab" class="hero-slider__dot" data-hero-dot="3" aria-controls="hero-slide-4" aria-selected="false" aria-label="4번 배너"></button>
+                <button type="button" role="tab" class="hero-slider__dot" data-hero-dot="4" aria-controls="hero-slide-5" aria-selected="false" aria-label="5번 배너"></button>
+            </div>
+        </section>
+
+        <section class="quick-links" aria-label="바로가기">
+            <div class="container">
+                <a class="quick-item" href="#admissions">
+                    <span class="icon">🎓</span>
+                    <div>
+                        <strong>입학전형 안내</strong>
+                        <p>전형별 일정과 제출 서류 안내</p>
+                    </div>
+                </a>
+                <a class="quick-item" href="#support">
+                    <span class="icon">💼</span>
+                    <div>
+                        <strong>장학제도</strong>
+                        <p>다양한 장학 혜택을 확인하세요</p>
+                    </div>
+                </a>
+                <a class="quick-item" href="#global">
+                    <span class="icon">🌐</span>
+                    <div>
+                        <strong>국제교류</strong>
+                        <p>해외 대학과의 공동 프로그램</p>
+                    </div>
+                </a>
+                <a class="quick-item" href="#notice">
+                    <span class="icon">📢</span>
+                    <div>
+                        <strong>공지사항</strong>
+                        <p>학사일정 및 주요 안내 확인</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container split">
+                <div class="text">
+                    <h2>GTCC 사이버 캠퍼스 소개</h2>
+                    <p>
+                        첨단 디지털 학습 환경을 기반으로 누구나 꿈을 이룰 수 있도록 설계된 온라인 대학입니다.
+                        24시간 언제든지 수강 가능한 강의와 실습, 체계적인 학사 관리 시스템을 통해 학습자 중심의 교육을 제공합니다.
+                    </p>
+                    <ul class="feature-list">
+                        <li>실무 중심의 커리큘럼과 프로젝트 학습</li>
+                        <li>전문 교수진과의 밀착형 멘토링</li>
+                        <li>국내·외 산업체와 연계한 취업 지원 프로그램</li>
+                    </ul>
+                    <a class="link" href="#about-more">대학 비전 더보기 →</a>
+                </div>
+                <div class="highlight-card" role="img" aria-label="온라인 강의를 듣는 학생">
+                    <div class="stat">
+                        <span class="number">95%</span>
+                        <span class="label">재학생 만족도</span>
+                    </div>
+                    <p>
+                        학습자 맞춤형 지원 서비스와 디지털 콘텐츠 혁신을 통해 높은 교육 만족도를 유지하고 있습니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs" class="section programs">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>전공 분야</h2>
+                    <p>미래 산업을 선도할 다양한 학부 및 전공을 만나보세요.</p>
+                </div>
+                <div class="program-grid">
+                    <article class="program-card">
+                        <h3>대학교</h3>
+                        <p>대학교 과정입니다.</p>
+                         <a href="http://gtcc.edu.ph">세부 전공 보기</a>
+                    </article>
+                    <article class="program-card">
+                        <h3>대학원</h3>
+                        <p>대학원과정입니다.</p>
+                         <a href="http://gtcc.edu.ph">세부 전공 보기</a>
+                    </article>
+                    <article class="program-card">
+                        <h3>평생교육원</h3>
+                        <p>GTCC평생교육원을 통한 학점 취득및 자격 취득과정입니다 .</p>
+                         <a href="http://gtcc.edu.ph">세부 전공 보기</a>
+                    </article>
+                    <article class="program-card">
+                        <h3>통합대체의학</h3>
+                        <p>GTCC만의 특성화된 통합대체의학 대학원 과정 입니다.</p>
+                        <a href="http://gtcc.edu.ph">세부 전공 보기</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="admissions" class="section admissions">
+            <div class="container split">
+                <div>
+                    <h2 data-locale-en="Admissions Information">입학 안내</h2>
+                    <p data-locale-en="Find everything you need to know about admissions, including application tracks, tuition, scholarships, and academic schedules.">신입학과 편입학 전형, 등록금, 장학 혜택, 학사 일정 등 입학에 필요한 모든 정보를 확인하세요.</p>
+                    <dl class="info-list">
+                        <div>
+                            <dt data-locale-en="Application Period">원서 접수</dt>
+                            <dd data-locale-en="2025.12.01 ~ 2025.12.31 (Online)">2025.12.01 ~ 2025.12.31 (온라인)</dd>
+                        </div>
+                        <div>
+                            <dt data-locale-en="Interview">면접 전형</dt>
+                            <dd data-locale-en="2026.01.10 ~ 2026.01.15 (Virtual Interview)">2026.01.10 ~ 2026.01.15 (화상 면접)</dd>
+                        </div>
+                        <div>
+                            <dt data-locale-en="Admission Result">합격 발표</dt>
+                            <dd data-locale-en="2026.01.25 (Website & SMS Notifications)">2026.01.25 (홈페이지 및 문자 안내)</dd>
+                        </div>
+                    </dl>
+                    <div class="cta-group">
+                        <a class="btn primary" href="#apply" data-locale-en="Apply Now">입학 지원 바로가기</a>
+                    </div>
+                </div>
+                <aside class="admission-card">
+                    <h3 data-locale-en="Consultation Booking">상담 예약</h3>
+                    <p data-locale-en="Our admissions counselors will help you with any questions you have.">입학 전문 상담사가 궁금증을 해결해 드립니다.</p>
+                    <form>
+                        <label>
+                            <span data-locale-en="Name">이름</span>
+                            <input type="text" name="name" placeholder="홍길동" required />
+                        </label>
+                        <label>
+                            <span data-locale-en="Contact">연락처</span>
+                            <input type="tel" name="phone" placeholder="010-1234-5678" required />
+                        </label>
+                        <label>
+                            <span data-locale-en="Preferred Date">상담 희망일</span>
+                            <input type="date" name="date" required />
+                        </label>
+                        <button type="submit" class="btn primary" data-locale-en="Reserve Now">예약 신청</button>
+                    </form>
+                </aside>
+            </div>
+        </section>
+
+        <section id="news" class="section news">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>새소식</h2>
+                    <a class="link" href="#news-all">전체 보기 →</a>
+                </div>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <span class="tag">공지</span>
+                        <h3>GTCC학습관 모집</h3>
+                        <time datetime="2025-10-09">교수자격 보유자로 지역 홈페이지 운영가능한 분.</time>
+                        <ul class="feature-list">
+                        <li>담당자: 010-5909-9320</li>
+                        <li>이메일: yjisc@naver.com</li>
+                    </article>
+                    <article class="news-card">
+                        <span class="tag">행사</span>
+                        <h3>메타버스 진로 박람회 개최</h3>
+                        <time datetime="2025-10-05">2025.10.05</time>
+                        <p>업계 전문가와 함께하는 최신 산업 트렌드 세미나 및 네트워킹 행사.</p>
+                    </article>
+                    <article class="news-card">
+                        <span class="tag">채용</span>
+                        <h3>GTCC 사이버대학 교수모집</h3>
+                        <time datetime="2025-10-09">교수채용 결격사유에 해당되지 않는 분. </time>
+                        <ul class="feature-list">
+                        <li>담당자: 010-5909-9320</li>
+                        <li>이메일: yjisc@naver.com</li>
+                     </ul>
+                        </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="section support">
+            <div class="container split">
+                <div>
+                    <h2>학생 지원 서비스</h2>
+                    <p>재학생을 위한 맞춤형 학습 지원과 커리어 개발 프로그램을 제공합니다.</p>
+                    <ul class="support-list">
+                        <li>
+                            <strong>학습 코칭</strong>
+                            <span>전문 학습 코치가 개인 맞춤 학습 계획을 제안합니다.</span>
+                        </li>
+                        <li>
+                            <strong>커리어 센터</strong>
+                            <span>채용 정보, 이력서 컨설팅, 모의 면접을 지원합니다.</span>
+                        </li>
+                        <li>
+                            <strong>학생 커뮤니티</strong>
+                            <span>다양한 동아리와 프로젝트 기반 교류 기회 제공.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="support-cta">
+                    <div class="campus-video">
+                        <h4>강의 동영상 맛보기</h4>
+                        <div
+                            class="video-slider"
+                            role="region"
+                            aria-roledescription="carousel"
+                            aria-label="GTCC 사이버대학 홍보 영상"
+                            data-video-slider
+                            data-video-interval="10000"
+                            tabindex="0"
+                        >
+                            <div class="video-slider__viewport">
+                                <div class="video-slider__track" data-video-track>
+                                    <div
+                                        id="campus-video-slide-1"
+                                        class="video-slider__slide is-active"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="1 / 10"
+                                        aria-hidden="false"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-2"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="2 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-3"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="3 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-4"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="4 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-5"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="5 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-6"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="6 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-7"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="7 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-8"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="8 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-9"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="9 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                    <div
+                                        id="campus-video-slide-10"
+                                        class="video-slider__slide"
+                                        data-video-slide
+                                        role="group"
+                                        aria-roledescription="slide"
+                                        aria-label="10 / 10"
+                                        aria-hidden="true"
+                                    >
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/2ggHiiRfnIE?si=ueRq8uqUdnZ-zMGL"
+                                                title="GTCC 사이버 캠퍼스 소개 영상"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen
+                                                loading="lazy"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-slider__controls">
+                                <button class="video-slider__nav video-slider__nav--prev" type="button" data-video-prev aria-label="이전 영상">
+                                    <span aria-hidden="true">‹</span>
+                                    <span class="sr-only">이전 영상 보기</span>
+                                </button>
+                                <div class="video-slider__dots" role="tablist">
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot is-active"
+                                        role="tab"
+                                        aria-selected="true"
+                                        aria-controls="campus-video-slide-1"
+                                        aria-label="1번 영상"
+                                        data-video-dot="0"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-2"
+                                        aria-label="2번 영상"
+                                        data-video-dot="1"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-3"
+                                        aria-label="3번 영상"
+                                        data-video-dot="2"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-4"
+                                        aria-label="4번 영상"
+                                        data-video-dot="3"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-5"
+                                        aria-label="5번 영상"
+                                        data-video-dot="4"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-6"
+                                        aria-label="6번 영상"
+                                        data-video-dot="5"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-7"
+                                        aria-label="7번 영상"
+                                        data-video-dot="6"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-8"
+                                        aria-label="8번 영상"
+                                        data-video-dot="7"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-9"
+                                        aria-label="9번 영상"
+                                        data-video-dot="8"
+                                    ></button>
+                                    <button
+                                        type="button"
+                                        class="video-slider__dot"
+                                        role="tab"
+                                        aria-selected="false"
+                                        aria-controls="campus-video-slide-10"
+                                        aria-label="10번 영상"
+                                        data-video-dot="9"
+                                    ></button>
+                                </div>
+                                <button class="video-slider__nav video-slider__nav--next" type="button" data-video-next aria-label="다음 영상">
+                                    <span class="sr-only">다음 영상 보기</span>
+                                    <span aria-hidden="true">›</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats" aria-label="주요 지표">
+            <div class="container">
+                <div class="stat-card">
+                    <strong>GTCC</strong>
+                    <span><a href="http://gtcc.edu.ph">General Trias College </a></span>
+                </div>
+                <div class="stat-card">
+                    <strong>YJIS</strong>
+                    <span><a href="http://myyoungji.com">YoungJi International School</a></span>
+                </div>
+                <div class="stat-card">
+                    <strong>강원</strong>
+                    <span><a href="http://www.myyoungji.com">지역 학습관</a></span>
+                </div>
+                <div class="stat-card">
+                    <strong>서울</strong>
+                    <span><a href="https://www.loverock.net">지역 학습관</a></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-banner">
+            <div class="container">
+                <h2>나만의 학습 여정을 시작하세요</h2>
+                <p>GTCC 사이버 캠퍼스에서 미래를 설계하고 새로운 도전을 경험해 보세요.</p>
+                <a class="btn primary" href="https://open.kakao.com/o/sBdzLw6e" target="_blank" rel="noopener noreferrer">지금 지원하기</a>
+            </div>
+        </section>
+
+    </main>
+
+    <div data-include="assets/partials/footer.html"></div>
+    <button type="button" class="scroll-to-top" data-scroll-top aria-label="맨 위로">
+        <svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
+            <path d="M12 5.5a1 1 0 0 1 .7.3l6 6a1 1 0 0 1-1.4 1.4L12 7.91l-5.3 5.29a1 1 0 0 1-1.4-1.42l6-6a1 1 0 0 1 .7-.28Z" />
+            <path d="M12 11.5a1 1 0 0 1 .7.3l6 6a1 1 0 0 1-1.4 1.4L12 13.91l-5.3 5.29a1 1 0 0 1-1.4-1.42l6-6a1 1 0 0 1 .7-.28Z" />
+        </svg>
+    </button>
+    <script src="assets/js/includes.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+</body>
+</html>
