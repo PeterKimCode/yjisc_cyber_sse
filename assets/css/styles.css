@@ -2539,11 +2539,11 @@ body.theme-dark .picture-wrapper {
     gap: 1.5rem;
 }
 
-.educator-grid {
-    margin-top: 2.5rem;
+.educator-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
+    margin-top: 2.5rem;
 }
 
 .educator-card {
@@ -2610,6 +2610,12 @@ body.theme-dark .picture-wrapper {
 @media (max-width: 1024px) {
     .educator-card {
         grid-template-columns: minmax(0, 120px) minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .educator-list {
+        grid-template-columns: 1fr;
     }
 }
 
