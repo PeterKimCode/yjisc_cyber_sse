@@ -1540,9 +1540,16 @@ body.theme-dark .dark-mode-toggle {
     background-size: cover;
 }
 
+.hero-slider .slide-inner {
+    width: min(1100px, 100%);
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 5vw, 3.5rem);
+    box-sizing: border-box;
+}
+
 .hero-slider .hero-slide > * {
     margin-bottom: 0;
-    width: 100%;
 }
 
 .hero-slider .hero-slide img.bg {
