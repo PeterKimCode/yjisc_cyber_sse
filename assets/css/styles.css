@@ -2525,6 +2525,11 @@ body.theme-dark .picture-wrapper {
     padding: 4rem 0 2rem;
 }
 
+.educator-page .page-body .container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
 .educator-intro {
     background: rgba(255, 255, 255, 0.92);
     border-radius: 1.25rem;
