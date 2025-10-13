@@ -1,28 +1,34 @@
+/* 다크 테마에서 사이트 헤더 그림자 설정 */
 body.theme-dark .site-header {
     box-shadow: 0 12px 32px rgba(3, 8, 24, 0.7);
 }
 
+/* 다크 테마에서 메가 메뉴 그림자 강화 */
 body.theme-dark .mega-menu {
     box-shadow: 0 32px 56px rgba(4, 10, 32, 0.75);
 }
 
+/* 상단 알림 바 기본 레이아웃과 색상 */
 .top-bar {
     background: linear-gradient(135deg, #0f1f4c 0%, #274bdb 55%, #6a8bff 100%);
     color: var(--white);
     font-size: 0.9rem;
 }
 
+/* 상단 바 링크 기본 스타일 */
 .top-bar a {
     color: inherit;
     text-decoration: none;
     font-weight: 500;
 }
 
+/* 링크 호버/포커스 시 강조 */
 .top-bar a:hover,
 .top-bar a:focus {
     text-decoration: underline;
 }
 
+/* 상단 바 3단 그리드 구성 */
 .top-bar__content {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -31,26 +37,31 @@ body.theme-dark .mega-menu {
     padding: 0.55rem 0;
 }
 
+/* 섹션 내 콘텐츠 정렬 */
 .top-bar__section {
     display: flex;
     align-items: center;
     gap: 0.4rem;
 }
 
+/* 좌측 섹션 정렬 */
 .top-bar__section--left {
     justify-content: flex-start;
 }
 
+/* 중앙 섹션 정렬 */
 .top-bar__section--center {
     justify-content: center;
     text-align: center;
 }
 
+/* 우측 섹션 정렬 */
 .top-bar__section--right {
     justify-content: flex-end;
     text-align: right;
 }
 
+/* 상단 바 아이템 기본 스타일 */
 .top-bar__item {
     display: inline-flex;
     align-items: center;
@@ -58,12 +69,14 @@ body.theme-dark .mega-menu {
     white-space: nowrap;
 }
 
+/* 상단 바 내 링크 레이아웃 */
 .top-bar__link {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
 }
 
+/* 모바일 화면 상단 바 재배치 */
 @media (max-width: 720px) {
     .top-bar__content {
         grid-template-columns: 1fr;
@@ -81,6 +94,7 @@ body.theme-dark .mega-menu {
     }
 }
 
+/* 사이트 헤더 고정 및 그림자 */
 .site-header {
     background: var(--white);
     position: sticky;
@@ -89,6 +103,7 @@ body.theme-dark .mega-menu {
     box-shadow: 0 8px 24px rgba(19, 33, 68, 0.08);
 }
 
+/* 헤더 컨테이너 정렬 */
 .site-header .container {
     display: flex;
     align-items: center;
@@ -97,15 +112,18 @@ body.theme-dark .mega-menu {
     gap: 1rem;
 }
 
+/* 메인 내비게이션 가변 너비 */
 .site-header .container > .main-nav {
     flex: 1 1 auto;
 }
 
+/* 메인 내비게이션 정렬 */
 .main-nav {
     display: flex;
     justify-content: center;
 }
 
+/* 로고 타이포그래피 */
 .logo {
     display: inline-flex;
     align-items: center;
@@ -118,12 +136,14 @@ body.theme-dark .mega-menu {
     flex-shrink: 0;
 }
 
+/* 로고 이미지 크기 */
 .logo img {
     height: 3.25rem;
     width: auto;
     display: block;
 }
 
+/* 로고 텍스트 영역 */
 .logo__text {
     display: flex;
     flex-direction: column;
@@ -139,21 +159,25 @@ body.theme-dark .mega-menu {
     justify-content: flex-end;
 }
 
+/* 로고 텍스트 라인 */
 .logo__line {
     display: block;
 }
 
+/* 로고 서브라인 강조 */
 .logo__line--secondary {
     font-weight: 700;
     font-size: 0.75rem;
 }
 
+/* 태블릿 이하 로고 크기 조정 */
 @media (max-width: 900px) {
     .logo img {
         height: 2.75rem;
     }
 }
 
+/* 모바일에서 로고 간격/크기 조정 */
 @media (max-width: 640px) {
     .logo {
         gap: 0.5rem;
@@ -166,12 +190,14 @@ body.theme-dark .mega-menu {
     }
 }
 
+/* 작은 화면에서 로고 텍스트 숨김 */
 @media (max-width: 520px) {
     .logo__text {
         display: none;
     }
 }
 
+/* 메인 메뉴 목록 레이아웃 */
 .main-nav ul {
     display: flex;
     list-style: none;
@@ -182,16 +208,19 @@ body.theme-dark .mega-menu {
     width: auto;
 }
 
+/* 네비게이션 항목 포지셔닝 */
 .main-nav li {
     position: relative;
 }
 
+/* 네비게이션 링크 기본 스타일 */
 .main-nav a {
     font-weight: 500;
     padding: 0.25rem 0;
     position: relative;
 }
 
+/* 링크 밑줄 애니메이션 */
 .main-nav a::after {
     content: "";
     position: absolute;
@@ -206,19 +235,23 @@ body.theme-dark .mega-menu {
     transition: transform 0.2s ease;
 }
 
+/* 호버/포커스 시 밑줄 표시 */
 .main-nav a:hover::after,
 .main-nav a:focus::after {
     transform: scaleX(1);
 }
 
+/* 메가 메뉴 보유 항목 처리 */
 .main-nav li.has-mega > a {
     display: inline-block;
 }
 
+/* 메가 메뉴 항목은 기본 밑줄 제거 */
 .main-nav li.has-mega > a::after {
     display: none;
 }
 
+/* 메가 메뉴 호버 간격 확보 */
 .has-mega::after {
     content: "";
     position: absolute;
@@ -229,6 +262,7 @@ body.theme-dark .mega-menu {
     pointer-events: none;
 }
 
+/* 메가 메뉴 컨테이너 스타일 */
 .mega-menu {
     position: absolute;
     left: 50%;
@@ -249,6 +283,7 @@ body.theme-dark .mega-menu {
     z-index: 20;
 }
 
+/* 상호작용 시 메가 메뉴 표시 */
 .has-mega:hover .mega-menu,
 .has-mega:focus-within .mega-menu,
 .has-mega.is-open .mega-menu {
@@ -258,6 +293,7 @@ body.theme-dark .mega-menu {
     pointer-events: auto;
 }
 
+/* 메가 메뉴 컬럼 레이아웃 */
 .mega-columns {
     --mega-min-column: 220px;
     display: grid;
@@ -267,11 +303,13 @@ body.theme-dark .mega-menu {
     justify-content: center;
 }
 
+/* 단일 컬럼 레이아웃 처리 */
 .mega-columns[data-columns='1'] {
     grid-template-columns: minmax(var(--mega-min-column), 1fr);
     justify-content: center;
 }
 
+/* 컬럼 내부 레이아웃 */
 .mega-column {
     min-width: 0;
     display: flex;
@@ -279,6 +317,7 @@ body.theme-dark .mega-menu {
     gap: 1.5rem;
 }
 
+/* 메가 메뉴 섹션 제목 */
 .mega-section h3,
 .mega-heading {
     font-size: 1rem;
@@ -287,6 +326,7 @@ body.theme-dark .mega-menu {
     color: #b8c8ff;
 }
 
+/* 섹션 링크 목록 스타일 */
 .mega-section ul {
     list-style: none;
     margin: 0;
@@ -295,6 +335,7 @@ body.theme-dark .mega-menu {
     gap: 0.45rem;
 }
 
+/* 보조 메뉴 목록 */
 .mega-submenu {
     list-style: none;
     margin: 0.5rem 0 0;
@@ -305,16 +346,19 @@ body.theme-dark .mega-menu {
     text-align: center;
 }
 
+/* 보조 메뉴 링크 색상 */
 .mega-submenu a {
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.95rem;
 }
 
+/* 보조 메뉴 상호작용 색상 */
 .mega-submenu a:hover,
 .mega-submenu a:focus {
     color: var(--accent);
 }
 
+/* 섹션 링크와 제목의 공통 색상 */
 .mega-section ul a,
 .mega-heading {
     color: var(--white);
@@ -325,6 +369,7 @@ body.theme-dark .mega-menu {
     text-overflow: ellipsis;
 }
 
+/* 섹션 링크/제목 상호작용 강조 */
 .mega-section ul a:hover,
 .mega-section ul a:focus,
 .mega-heading:hover,
@@ -332,6 +377,7 @@ body.theme-dark .mega-menu {
     color: var(--accent);
 }
 
+/* 메가 메뉴 제목 화살표 아이콘 */
 .mega-heading {
     display: inline-flex;
     align-items: center;
@@ -339,11 +385,13 @@ body.theme-dark .mega-menu {
     padding: 0.25rem 0;
 }
 
+/* 제목 뒤 화살표 표시 */
 .mega-heading::after {
     content: "→";
     font-size: 0.8rem;
 }
 
+/* 메가 메뉴 프로모션 블록 */
 .mega-promo {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 1rem;
@@ -352,26 +400,31 @@ body.theme-dark .mega-menu {
     gap: 0.75rem;
 }
 
+/* 프로모션 제목 강조 */
 .mega-promo strong {
     font-size: 1.05rem;
 }
 
+/* 프로모션 설명 문단 */
 .mega-promo p {
     margin: 0;
     color: rgba(255, 255, 255, 0.75);
     line-height: 1.5;
 }
 
+/* 헤더 CTA 버튼 묶음 */
 .cta-group {
     display: flex;
     gap: 0.75rem;
 }
 
+/* 구글 번역 위젯 컨테이너 */
 .google-translate {
     display: flex;
     align-items: center;
 }
 
+/* 번역 위젯 기본 스타일 */
 .google-translate .goog-te-gadget {
     display: inline-flex;
     align-items: center;
@@ -380,10 +433,12 @@ body.theme-dark .mega-menu {
     color: var(--primary);
 }
 
+/* 번역 위젯 텍스트 정렬 */
 .google-translate .goog-te-gadget > span {
     margin: 0;
 }
 
+/* 번역 선택 콤보 박스 스타일 */
 .google-translate .goog-te-combo {
     border-radius: 999px !important;
     padding: 0.5rem 1.4rem !important;
@@ -394,10 +449,12 @@ body.theme-dark .mega-menu {
     cursor: pointer !important;
 }
 
+/* 번역 위젯 로고 숨김 */
 .google-translate .goog-te-gadget img {
     display: none;
 }
 
+/* 태블릿 화면에서 헤더 레이아웃 조정 */
 @media (max-width: 768px) {
     .site-header .container {
         flex-direction: column;
@@ -414,6 +471,7 @@ body.theme-dark .mega-menu {
     }
 }
 
+/* 820px 이하에서 네비게이션 폭 조정 */
 @media (max-width: 820px) {
     .main-nav {
         width: 100%;
@@ -424,6 +482,7 @@ body.theme-dark .mega-menu {
     }
 }
 
+/* 모바일에서 메가 메뉴 위치 재조정 */
 @media (max-width: 768px) {
     .main-nav {
         position: relative;
@@ -445,6 +504,7 @@ body.theme-dark .mega-menu {
     }
 }
 
+/* 작은 화면에서 메가 메뉴 가변 크기 */
 @media (max-width: 560px) {
     .mega-menu {
         width: calc(100vw - 2rem);
