@@ -1,6 +1,18 @@
 (() => {
     const INCLUDE_ATTR = 'data-include';
 
+    const ensureStylesheet = (href, key) => {
+        if (document.querySelector(`link[data-dynamic-style="${key}"]`)) {
+            return;
+        }
+
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.dataset.dynamicStyle = key;
+        document.head.appendChild(link);
+    };
+
     const loadIncludes = async () => {
         const elements = Array.from(document.querySelectorAll(`[${INCLUDE_ATTR}]`));
 
@@ -25,6 +37,10 @@
 
                     const html = await response.text();
                     element.innerHTML = html;
+
+                    if (url.includes('header.html')) {
+                        ensureStylesheet('assets/css/navigation.css', 'navigation');
+                    }
                     element.removeAttribute(INCLUDE_ATTR);
                 } catch (error) {
                     console.error(error);
