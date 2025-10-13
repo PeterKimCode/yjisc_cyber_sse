@@ -269,7 +269,7 @@ body.theme-dark .mega-menu {
     top: 100%;
     transform: translate(-50%, 10px);
     width: auto;
-    min-width: clamp(22rem, 48vw, 46rem);
+    min-width: clamp(22rem, 48vw, 30rem);
     max-width: min(56rem, 92vw);
     background: #0f1f4c;
     color: var(--white);
