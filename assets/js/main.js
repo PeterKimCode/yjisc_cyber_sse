@@ -485,6 +485,89 @@ const initialize = () => {
     }
 
 
+    const initAboutSlider = () => {
+        const slider = document.querySelector('[data-about-slider]');
+        if (!slider) {
+            return;
+        }
+
+        const slides = Array.from(slider.querySelectorAll('[data-about-slide]'));
+        if (slides.length === 0) {
+            return;
+        }
+
+        const dots = Array.from(slider.querySelectorAll('[data-about-dot]'));
+        const prevButton = slider.querySelector('[data-about-prev]');
+        const nextButton = slider.querySelector('[data-about-next]');
+
+        let currentIndex = slides.findIndex((slide) => slide.classList.contains('is-active'));
+        if (currentIndex < 0) {
+            currentIndex = 0;
+        }
+
+        const setActive = (index) => {
+            const targetIndex = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, idx) => {
+                const isActive = idx === targetIndex;
+                slide.classList.toggle('is-active', isActive);
+                slide.setAttribute('aria-hidden', String(!isActive));
+            });
+
+            dots.forEach((dot, idx) => {
+                const isActive = idx === targetIndex;
+                dot.classList.toggle('is-active', isActive);
+                dot.setAttribute('aria-selected', String(isActive));
+                dot.setAttribute('tabindex', isActive ? '0' : '-1');
+
+                if (isActive) {
+                    dot.setAttribute('aria-current', 'true');
+                } else {
+                    dot.removeAttribute('aria-current');
+                }
+            });
+
+            currentIndex = targetIndex;
+        };
+
+        const goTo = (index) => {
+            if (slides.length === 0) {
+                return;
+            }
+
+            setActive(index);
+        };
+
+        prevButton?.addEventListener('click', () => {
+            goTo(currentIndex - 1);
+        });
+
+        nextButton?.addEventListener('click', () => {
+            goTo(currentIndex + 1);
+        });
+
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                goTo(idx);
+            });
+        });
+
+        slider.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                goTo(currentIndex - 1);
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                goTo(currentIndex + 1);
+            }
+        });
+
+        setActive(currentIndex);
+    };
+
+    initAboutSlider();
+
+
     const videoSliders = document.querySelectorAll('[data-video-slider]');
     if (videoSliders.length > 0) {
         const initVideoSlider = (slider) => {

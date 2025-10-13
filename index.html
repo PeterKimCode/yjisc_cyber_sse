@@ -197,14 +197,89 @@
                     </ul>
                     <a class="link" href="#about-more">대학 비전 더보기 →</a>
                 </div>
-                <div class="highlight-card" role="img" aria-label="온라인 강의를 듣는 학생">
-                    <div class="stat">
-                        <span class="number">95%</span>
-                        <span class="label">재학생 만족도</span>
+                <div
+                    class="about-slider"
+                    data-about-slider
+                    role="region"
+                    aria-label="GTCC 캠퍼스 하이라이트 이미지 슬라이드"
+                    tabindex="0"
+                >
+                    <div class="about-slider__track" data-about-track aria-live="polite">
+                        <figure
+                            id="about-slide-1"
+                            class="about-slide is-active"
+                            data-about-slide
+                            role="group"
+                            aria-roledescription="slide"
+                            aria-label="1 / 2"
+                            aria-hidden="false"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=960&q=80"
+                                alt="온라인 강의 플랫폼을 통해 토론하는 학생들"
+                                loading="lazy"
+                            />
+                            <figcaption>
+                                실시간 토론과 협업 도구를 활용해 학습자가 중심이 되는 온라인 강의 환경을 제공합니다.
+                            </figcaption>
+                        </figure>
+                        <figure
+                            id="about-slide-2"
+                            class="about-slide"
+                            data-about-slide
+                            role="group"
+                            aria-roledescription="slide"
+                            aria-label="2 / 2"
+                            aria-hidden="true"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=960&q=80"
+                                alt="디지털 자료를 활용해 학습을 준비하는 학생"
+                                loading="lazy"
+                            />
+                            <figcaption>
+                                언제 어디서나 학습 자료에 접근할 수 있는 맞춤형 학습 지원 시스템을 통해 학습 몰입도를 높입니다.
+                            </figcaption>
+                        </figure>
                     </div>
-                    <p>
-                        학습자 맞춤형 지원 서비스와 디지털 콘텐츠 혁신을 통해 높은 교육 만족도를 유지하고 있습니다.
-                    </p>
+                    <div class="about-slider__controls">
+                        <button
+                            type="button"
+                            class="about-slider__control"
+                            data-about-prev
+                            aria-label="이전 이미지"
+                        >
+                            <span aria-hidden="true">&#10094;</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="about-slider__control"
+                            data-about-next
+                            aria-label="다음 이미지"
+                        >
+                            <span aria-hidden="true">&#10095;</span>
+                        </button>
+                    </div>
+                    <div class="about-slider__dots" role="tablist">
+                        <button
+                            type="button"
+                            role="tab"
+                            class="about-slider__dot is-active"
+                            data-about-dot="0"
+                            aria-controls="about-slide-1"
+                            aria-selected="true"
+                            aria-label="첫 번째 이미지 보기"
+                        ></button>
+                        <button
+                            type="button"
+                            role="tab"
+                            class="about-slider__dot"
+                            data-about-dot="1"
+                            aria-controls="about-slide-2"
+                            aria-selected="false"
+                            aria-label="두 번째 이미지 보기"
+                        ></button>
+                    </div>
                 </div>
             </div>
         </section>
