@@ -309,6 +309,42 @@ const initialize = () => {
 
             let autoplayId = null;
 
+            const preloadAssets = () => {
+                const sources = new Set();
+
+                slides.forEach((slide) => {
+                    const images = Array.from(
+                        slide.querySelectorAll('img[data-preload], img[data-src], img[data-lazy], img.bg, picture source')
+                    );
+
+                    images.forEach((image) => {
+                        if (!(image instanceof HTMLElement)) {
+                            return;
+                        }
+
+                        const source =
+                            image.getAttribute('data-src') ||
+                            image.getAttribute('data-lazy') ||
+                            image.getAttribute('src') ||
+                            image.getAttribute('srcset') ||
+                            '';
+
+                        if (!source || sources.has(source)) {
+                            return;
+                        }
+
+                        sources.add(source);
+
+                        const img = new Image();
+                        if (image.tagName === 'SOURCE') {
+                            img.srcset = source;
+                        } else {
+                            img.src = source;
+                        }
+                    });
+                });
+            };
+
             const getSlideHeight = (slide) => {
                 if (!slide) {
                     return 0;
