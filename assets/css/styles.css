@@ -1382,6 +1382,12 @@ body.theme-dark .dark-mode-toggle {
     box-shadow: inset 0 0 0 1px rgba(58, 111, 247, 0.16);
 }
 
+.highlight-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
 .highlight-card .stat {
     display: flex;
     align-items: baseline;
@@ -1399,6 +1405,39 @@ body.theme-dark .dark-mode-toggle {
 .highlight-card .number {
     font-size: 2.8rem;
     font-weight: 700;
+}
+
+.process-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.process-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.process-step__index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 700;
+}
+
+.process-step__example {
+    margin-top: 0.35rem;
+    color: var(--text-subtle);
+    font-size: 0.95rem;
 }
 
 .about-slider {
@@ -1712,6 +1751,44 @@ body.theme-dark .dark-mode-toggle {
     padding: 2.5rem;
     display: grid;
     gap: 1.5rem;
+}
+
+.support-cta__intro {
+    margin: 0;
+    color: var(--text-subtle);
+    line-height: 1.6;
+}
+
+.comparison-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .comparison-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.comparison-card {
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 28px rgba(140, 100, 0, 0.12);
+    backdrop-filter: blur(8px);
+    display: grid;
+    gap: 0.65rem;
+}
+
+.comparison-card h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.comparison-card p {
+    margin: 0;
+    line-height: 1.55;
 }
 
 .campus-video {
