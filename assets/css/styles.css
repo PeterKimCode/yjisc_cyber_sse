@@ -2151,6 +2151,7 @@ body.theme-dark .picture-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
     gap: 1.67rem 2.5rem;
     margin-bottom: 1.67rem;
 }
