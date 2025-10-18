@@ -2142,9 +2142,12 @@ body.theme-dark .picture-wrapper {
 }
 
 .site-footer .logo {
+    display: block;
+    margin: 0 0 0.75rem;
     font-size: 1rem;
     letter-spacing: 0.08em;
     white-space: nowrap;
+    color: #fff;
 }
 
 .footer-top {
