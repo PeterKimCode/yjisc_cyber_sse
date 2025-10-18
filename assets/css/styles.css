@@ -1104,7 +1104,7 @@ body.theme-dark .dark-mode-toggle {
     box-shadow: 0 28px 48px rgba(15, 31, 76, 0.16);
     transition: height 0.6s ease;
     background: transparent;
-    min-height: 60vh;
+    min-height: 40vh;
 }
 
 .hero-slide {
@@ -1129,7 +1129,7 @@ body.theme-dark .dark-mode-toggle {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 60vh;
+    min-height: 40vh;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1190,7 +1190,7 @@ body.theme-dark .dark-mode-toggle {
 }
 
 .js-enabled .hero-slider__track {
-    min-height: 60vh;
+    min-height: 40vh;
 }
 
 .js-enabled .hero-slide {
@@ -1293,7 +1293,7 @@ body.theme-dark .dark-mode-toggle {
     }
 
     .js-enabled .hero-slider__track {
-        min-height: 60vh;
+        min-height: 40vh;
     }
 
     .hero-slider__track {
