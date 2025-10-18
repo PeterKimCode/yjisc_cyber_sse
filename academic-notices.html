@@ -252,7 +252,7 @@
                         관심 분야를 선택하면 관련 공지를 이메일과 문자로 받아볼 수 있습니다. 설정은 언제든 변경할 수
                         있습니다.
                     </p>
-                    <form class="support-cta">
+                    <form class="support-cta" id="support-alert-form">
                         <div class="cta-heading">
                             <span class="kicker">빠른 맞춤 안내</span>
                             <h3>학사 알림을 가장 빠르게 받아보세요</h3>
@@ -298,5 +298,35 @@
 
     <script src="assets/js/includes.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("support-alert-form");
+
+            if (!form) {
+                return;
+            }
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const name = (formData.get("name") || "").toString().trim();
+                const email = (formData.get("email") || "").toString().trim();
+                const category = (formData.get("category") || "").toString().trim();
+
+                const subject = encodeURIComponent("GTCC 학사 알림 신청");
+                const bodyLines = [
+                    "다음과 같은 내용으로 알림 신청이 접수되었습니다:",
+                    "",
+                    `이름: ${name || "(미입력)"}`,
+                    `이메일: ${email || "(미입력)"}`,
+                    `관심 분야: ${category || "(미선택)"}`,
+                ];
+
+                const body = encodeURIComponent(bodyLines.join("\n"));
+                window.location.href = `mailto:gtcccybercollege@gmail.com?subject=${subject}&body=${body}`;
+            });
+        });
+    </script>
 </body>
 </html>
