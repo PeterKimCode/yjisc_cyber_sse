@@ -1753,6 +1753,130 @@ body.theme-dark .dark-mode-toggle {
     gap: 1.5rem;
 }
 
+.support-cta.events-register {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.85), rgba(255, 220, 124, 0.35))
+            no-repeat,
+        linear-gradient(160deg, rgba(255, 189, 90, 0.35), rgba(255, 239, 195, 0.25));
+    border: 1px solid rgba(255, 184, 77, 0.35);
+    box-shadow: 0 20px 40px rgba(209, 148, 15, 0.18);
+    padding: clamp(2rem, 5vw, 3rem);
+    gap: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.support-cta.events-register::before {
+    content: "";
+    position: absolute;
+    inset: -40% auto auto -10%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 70%);
+    opacity: 0.6;
+    pointer-events: none;
+    transform: rotate(15deg);
+}
+
+.support-cta.events-register .cta-content,
+.support-cta.events-register .cta-actions {
+    position: relative;
+    z-index: 1;
+}
+
+.support-cta.events-register .cta-content {
+    display: grid;
+    gap: 1rem;
+}
+
+.support-cta.events-register .cta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(120, 71, 0, 0.85);
+}
+
+.support-cta.events-register .cta-eyebrow::before {
+    content: "";
+    width: 30px;
+    height: 1.5px;
+    background: currentColor;
+    opacity: 0.5;
+}
+
+.support-cta.events-register h3 {
+    font-size: clamp(1.65rem, 3.5vw, 2rem);
+    font-weight: 800;
+    line-height: 1.3;
+    color: #4d2b00;
+    margin: 0;
+}
+
+.support-cta.events-register p {
+    margin: 0;
+    color: rgba(77, 43, 0, 0.8);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.support-cta.events-register .feature-list {
+    margin: 0;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 0.75rem;
+    color: rgba(77, 43, 0, 0.82);
+}
+
+.support-cta.events-register .feature-list strong {
+    font-weight: 700;
+    color: #4d2b00;
+}
+
+.support-cta.events-register .cta-actions {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+}
+
+.support-cta.events-register .btn.primary {
+    background: linear-gradient(135deg, #ff9933, #ff7b00);
+    border: none;
+    box-shadow: 0 14px 24px rgba(255, 139, 40, 0.35);
+}
+
+.support-cta.events-register .btn.primary:hover,
+.support-cta.events-register .btn.primary:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(255, 139, 40, 0.5);
+}
+
+.support-cta.events-register .btn.ghost {
+    border-color: rgba(77, 43, 0, 0.35);
+    color: #4d2b00;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+.support-cta.events-register .btn.ghost:hover,
+.support-cta.events-register .btn.ghost:focus-visible {
+    border-color: rgba(77, 43, 0, 0.55);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+@media (min-width: 768px) {
+    .support-cta.events-register {
+        grid-template-columns: 1.5fr minmax(0, 1fr);
+        align-items: center;
+    }
+
+    .support-cta.events-register .cta-actions {
+        justify-self: end;
+    }
+}
+
 .support-cta__intro {
     margin: 0;
     color: var(--text-subtle);
