@@ -239,6 +239,10 @@ img {
     box-shadow: 0 28px 55px rgba(17, 29, 63, 0.12);
 }
 
+.map-section__details.map-card {
+    padding: clamp(1.15rem, 0.95rem + 0.7vw, 1.7rem);
+}
+
 .map-section__details h2 {
     margin: 0 0 1rem;
     font-size: clamp(1.55rem, 1.2rem + 1.5vw, 1.95rem);
@@ -247,7 +251,7 @@ img {
 .map-section__details {
     display: flex;
     flex-direction: column;
-    gap: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
+    gap: clamp(0.75rem, 0.6rem + 0.5vw, 1.05rem);
 }
 
 .map-section__intro,
@@ -262,7 +266,7 @@ img {
 }
 
 .map-section__details .map-meta {
-    margin-top: 0;
+    margin-top: clamp(0.9rem, 0.7rem + 0.6vw, 1.2rem);
 }
 
 .map-meta dl {
@@ -323,7 +327,7 @@ img {
 }
 
 .map-section__cta {
-    margin-top: clamp(1.25rem, 1rem + 1vw, 1.8rem);
+    margin-top: clamp(0.85rem, 0.7rem + 0.6vw, 1.2rem);
     width: fit-content;
 }
 
