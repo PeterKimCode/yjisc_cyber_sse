@@ -1164,6 +1164,8 @@ body.theme-dark .dark-mode-toggle {
     border-radius: 1.5rem;
     overflow: hidden;
     padding-bottom: 4.5rem;
+    background: var(--hero-background, var(--bg));
+    transition: background 0.6s ease;
 }
 
 .hero-slider__track {
