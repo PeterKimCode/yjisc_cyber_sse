@@ -309,6 +309,23 @@ const initialize = () => {
 
             let autoplayId = null;
 
+            const syncSliderBackground = () => {
+                const activeSlide = slides[currentIndex];
+                if (!activeSlide) {
+                    slider.style.removeProperty('--hero-background');
+                    return;
+                }
+
+                const computed = window.getComputedStyle(activeSlide);
+                const background = computed.getPropertyValue('--hero-background').trim();
+
+                if (background) {
+                    slider.style.setProperty('--hero-background', background);
+                } else {
+                    slider.style.removeProperty('--hero-background');
+                }
+            };
+
             const preloadAssets = () => {
                 const sources = new Set();
 
@@ -422,6 +439,7 @@ const initialize = () => {
                 });
 
                 currentIndex = targetIndex;
+                syncSliderBackground();
                 updateHeight();
             };
 
@@ -513,6 +531,7 @@ const initialize = () => {
             window.addEventListener('load', updateHeight);
 
             const handleThemeChange = () => {
+                syncSliderBackground();
                 window.requestAnimationFrame(updateHeight);
             };
 
