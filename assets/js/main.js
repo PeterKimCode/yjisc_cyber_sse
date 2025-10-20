@@ -1050,6 +1050,51 @@ const initialize = () => {
         }
     }
 
+    const setupNewsletterMailto = () => {
+        const form = document.querySelector('#newsletter-subscribe-form');
+        if (!form) {
+            return;
+        }
+
+        const emailInput = form.querySelector("input[type='email']");
+        const feedback = form.querySelector('[data-feedback]');
+
+        const updateFeedback = (message = '') => {
+            if (feedback) {
+                feedback.textContent = message;
+            }
+        };
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            if (!(emailInput instanceof HTMLInputElement)) {
+                return;
+            }
+
+            if (!emailInput.checkValidity()) {
+                emailInput.reportValidity();
+                updateFeedback('유효한 이메일 주소를 입력해주세요.');
+                return;
+            }
+
+            const emailValue = emailInput.value.trim();
+            const subject = encodeURIComponent('간편 구독 신청');
+            const body = encodeURIComponent(`신청자 이메일: ${emailValue}\n간편 구독 신청`);
+            const mailtoLink = `mailto:gtcccybercolleage@gmail.com?subject=${subject}&body=${body}`;
+
+            updateFeedback('메일 작성 창이 열립니다. 간편 구독 신청 내용을 확인해주세요.');
+
+            window.location.href = mailtoLink;
+        });
+
+        form.addEventListener('input', () => {
+            updateFeedback();
+        });
+    };
+
+    setupNewsletterMailto();
+
     const scrollButton = ensureScrollButton();
     if (scrollButton) {
         const toggleVisibility = () => {
