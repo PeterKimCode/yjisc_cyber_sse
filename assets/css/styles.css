@@ -933,8 +933,8 @@ body.theme-dark .dark-mode-toggle {
 }
 
 .faculty-card__photo {
-    width: 4.25rem;
-    height: 4.25rem;
+    width: 8.5rem;
+    height: 8.5rem;
     border-radius: 1.1rem;
     overflow: hidden;
     flex-shrink: 0;
@@ -989,8 +989,8 @@ body.theme-dark .dark-mode-toggle {
     }
 
     .faculty-card__photo {
-        width: 3.6rem;
-        height: 3.6rem;
+        width: 7.2rem;
+        height: 7.2rem;
         border-radius: 0.9rem;
     }
 }
