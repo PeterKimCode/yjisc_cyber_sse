@@ -3,88 +3,117 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>대학 인증·수상 | GTCC</title>
+    <title>교과목다운로드 | GTCC</title>
     <link rel="icon" type="image/png" href="assets/icons/gtcc.png" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 파란색 부분(교과목 리스트)을 중앙 정렬하기 위한 스타일 */
+        .subject-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 60px 20px; 
+        }
+        
+        .subject-header {
+            text-align: center; /* 제목과 설명 중앙 정렬 */
+            margin-bottom: 40px;
+        }
+        
+        .subject-header h1 { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* 리스트를 격자 형태로 중앙 배치 */
+        .subject-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            max-width: 1000px; /* 리스트 전체 너비 제한 */
+            margin: 0 auto; /* 리스트 자체를 중앙으로 */
+        }
+
+        .subject-link {
+            display: block;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-top: 3px solid #3b82f6; /* 포인트 컬러 */
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .subject-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: #f8fbff;
+            color: #3b82f6;
+        }
+    </style>
 </head>
 <body>
     <div data-include="assets/partials/header.html"></div>
-<main class="content-page">
-    <section class="page-hero">
-        <div class="container">
-            <span class="page-category">사이버홍보실</span>
-            <h1>대학 인증·수상</h1>
-            <p>GTCC 사이버 캠퍼스가 수상한 인증과 표창을 소개합니다.</p>
-        </div>
-    </section>
-    <section class="page-body">
-        <div class="container">
-        <article class="info-block">
-            <h2>성과와 인정</h2>
-            <p class="lead">국내외 기관으로부터 받은 주요 인증과 수상 이력을 소개합니다.</p>
-            <p>교육 품질, 경영 투명성, 사회공헌 등 다양한 분야에서 우수성을 인정받고 있습니다.</p>
-            <ul class="info-list">
-                <li>원격대학 평가 최우수</li>
-                <li>스마트러닝상 수상</li>
-                <li>KERIS 온라인교육 품질인증</li>
-            </ul>
-        </article>
-        <aside class="info-aside">
-            <h3>문의</h3>
-            <p class="info-aside__lead">수상 실적 활용 및 인증 갱신 문의는 홍보팀으로 연락 주세요.</p>
-            <ul class="contact-list">
-                <li>전화<span>010-5909-9320</span></li>
-                <li>이메일<span>yjisc@naver.com</span></li>
-            </ul>
-            <a class="btn primary" href="https://open.kakao.com/o/pfJrLjVh" target="_blank" rel="noopener noreferrer">보도자료 요청</a>
-        </aside>
-        </div>
-    </section>
-<section class="page-detail">
-    <div class="container">
-        <h2>연도별 수상</h2>
-        <div class="detail-grid">
-            <section class="detail-card">
-                <h3>최근 5년 주요 실적</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <strong>2025</strong>
-                    <span>원격대학 종합평가 최우수 인증</span>
-                </div>
-                <div class="timeline-item">
-                    <strong>2023</strong>
-                    <span>스마트러닝 혁신상</span>
-                </div>
-                <div class="timeline-item">
-                    <strong>2022</strong>
-                    <span>온라인 교육품질 인증 획득</span>
-                </div>
-                <div class="timeline-item">
-                    <strong>2021</strong>
-                    <span>사회공헌 우수기관 표창</span>
-                </div>
-                <div class="timeline-item">
-                    <strong>2020</strong>
-                    <span>국가인적자원개발 우수기관인증</span>
-                </div>
+
+    <main class="content-page">
+        <section class="page-hero">
+            <div class="container">
+                <span class="page-category">교과목 자료실</span>
+                <h1>교과목 자료실</h1>
+                <p>교수님들의 교과목 관련 자료를 확인하고 다운로드하실 수 있습니다.</p>
             </div>
-            </section>
-            <section class="detail-card">
-                <h3>인증 유지 전략</h3>
-                <p>정기 평가와 자체 진단을 통해 인증 기준을 상시 충족하도록 관리합니다.</p>
-                <ul>
-                    <li>연 2회 자체점검 및 개선 계획 수립</li>
-                    <li>외부 전문가 자문단 운영</li>
-                    <li>재학생·동문 의견을 반영한 품질 개선</li>
+        </section>
+
+        <div class="subject-container">
+            <article>
+                <div class="subject-header">
+                    <h1>교과목 리스트</h1>
+                    <p>항목을 클릭하면 해당 교과목 자료를 다운로드하실 수 있습니다.</p>
+                </div>
+
+                <ul class="subject-list">
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/cUeCdUcrE" target="_blank" class="subject-link">역사신학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/dtvnCySh2" target="_blank" class="subject-link">공관복음</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/M7z4bH6jr" target="_blank" class="subject-link">조직신학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/589sC8V4M" target="_blank" class="subject-link">현대신학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/XmUfF2Yqo" target="_blank" class="subject-link">기독교윤리학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/BHtK6Dop1" target="_blank" class="subject-link">목회학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/ehKoWXsPX" target="_blank" class="subject-link">목회학상담</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/6G4lf64OP" target="_blank" class="subject-link">예배학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/f8gmpVvDh" target="_blank" class="subject-link">설교학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/4jbLH62Gf" target="_blank" class="subject-link">구약개론</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/GyoriafML" target="_blank" class="subject-link">신약개론</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/rZH9EBKPZ" target="_blank" class="subject-link">실천신학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/ghvJFp6kX" target="_blank" class="subject-link">선교학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/aeJpJIua6" target="_blank" class="subject-link">기독교교육학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/s9PaoCmVq" target="_blank" class="subject-link">교리신학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/XxSlXzZ4H" target="_blank" class="subject-link">교회사</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/LsJbLbNnZ" target="_blank" class="subject-link">기독교영성</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/qr6A4A4Nh" target="_blank" class="subject-link">교회절기</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/MKCg5MZra" target="_blank" class="subject-link">장로교행정론</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/jJF4LHjJa" target="_blank" class="subject-link">모세오경</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/s5F366BCG" target="_blank" class="subject-link">장로교회사</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/dMv4NbXj4" target="_blank" class="subject-link">예언서주해</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/RjHyDYjdM" target="_blank" class="subject-link">한국교회사</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/AA4jllAtF" target="_blank" class="subject-link">개혁신학</a></li>
+                    <li><a href="http://yfloavmotj9hz8g2ivvxyqpfin2ciap.quickconnect.to/sharing/R6GDOOSWY" target="_blank" class="subject-link">개혁신학PDF</a></li>
                 </ul>
-            </section>
+            </article>
         </div>
-    </div>
-</section>
-</main>
+    </main>
+    
     <div data-include="assets/partials/footer.html"></div>
 
     <script src="assets/js/includes.js" defer></script>
